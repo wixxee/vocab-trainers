@@ -1,0 +1,1656 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Travel &amp; Cities — English Vocabulary Trainer (93 слова)</title>
+  <style>
+    :root {
+      --bg: #f6f7f9;
+      --surface: #ffffff;
+      --surface-2: #f0f2f6;
+      --border: #e2e6ee;
+      --text: #161b26;
+      --text-muted: #5c667a;
+      --accent: #3b5bdb;
+      --accent-hover: #2f4bc4;
+      --accent-soft: #eef2ff;
+      --success: #16a34a;
+      --success-soft: #eafaf0;
+      --warning: #d97706;
+      --warning-soft: #fef6e7;
+      --danger: #dc2626;
+      --danger-soft: #fef0f0;
+      --shadow: 0 8px 28px rgba(18, 25, 43, 0.07);
+      --radius: 16px;
+      --radius-sm: 10px;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0f131a;
+      --surface: #171c26;
+      --surface-2: #1f2633;
+      --border: #2a3345;
+      --text: #eef2f8;
+      --text-muted: #9aa5ba;
+      --accent: #6c8cff;
+      --accent-hover: #87a1ff;
+      --accent-soft: rgba(108, 140, 255, 0.14);
+      --success: #34d399;
+      --success-soft: rgba(52, 211, 153, 0.14);
+      --warning: #fbbf24;
+      --warning-soft: rgba(251, 191, 36, 0.14);
+      --danger: #f87171;
+      --danger-soft: rgba(248, 113, 113, 0.14);
+      --shadow: 0 10px 32px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      min-height: 100vh;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .app {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 20px 18px 48px;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .brand h1 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .brand p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      font: inherit;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      border-radius: var(--radius-sm);
+      padding: 8px 13px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: all 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    button:hover:not(:disabled) {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    button:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    button.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    button.primary:hover:not(:disabled) {
+      background: var(--accent-hover);
+      border-color: var(--accent-hover);
+      color: #fff;
+    }
+
+    button.success {
+      background: var(--success-soft);
+      border-color: transparent;
+      color: var(--success);
+    }
+    button.success:hover:not(:disabled) {
+      border-color: var(--success);
+    }
+
+    button.warning {
+      background: var(--warning-soft);
+      border-color: transparent;
+      color: var(--warning);
+    }
+    button.warning:hover:not(:disabled) {
+      border-color: var(--warning);
+    }
+
+    button.danger {
+      background: var(--danger-soft);
+      border-color: transparent;
+      color: var(--danger);
+    }
+    button.danger:hover:not(:disabled) {
+      border-color: var(--danger);
+    }
+
+    button.ghost {
+      background: transparent;
+      border-color: transparent;
+      color: var(--text-muted);
+    }
+    button.ghost:hover:not(:disabled) {
+      background: var(--surface-2);
+      color: var(--text);
+      border-color: transparent;
+    }
+
+    /* Progress Bar Panel */
+    .progress-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 18px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .progress-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+      font-size: 0.875rem;
+    }
+
+    .stats-badges {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      background: var(--surface-2);
+      color: var(--text-muted);
+    }
+
+    .badge.mastered { background: var(--success-soft); color: var(--success); }
+    .badge.learning { background: var(--warning-soft); color: var(--warning); }
+    .badge.accent { background: var(--accent-soft); color: var(--accent); }
+
+    .bar-track {
+      height: 8px;
+      background: var(--surface-2);
+      border-radius: 999px;
+      overflow: hidden;
+      display: flex;
+    }
+
+    .bar-mastered {
+      background: var(--success);
+      height: 100%;
+      transition: width 0.3s ease;
+    }
+
+    .bar-learning {
+      background: var(--warning);
+      height: 100%;
+      transition: width 0.3s ease;
+    }
+
+    /* Navigation & Filters */
+    .controls-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .tabs {
+      display: inline-flex;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 4px;
+      gap: 4px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.86rem;
+    }
+
+    .tab-btn.active {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .tab-btn:hover:not(.active) {
+      color: var(--text);
+      background: var(--surface-2);
+    }
+
+    .filters-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    select, input[type="text"] {
+      font: inherit;
+      font-size: 0.875rem;
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.15s ease;
+    }
+
+    select:focus, input[type="text"]:focus {
+      border-color: var(--accent);
+    }
+
+    .toggle-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 7px 11px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .toggle-pill input {
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+
+    /* Main Stage Card */
+    .stage {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 48px 20px;
+      color: var(--text-muted);
+    }
+
+    .empty-state h3 {
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    /* Flashcards */
+    .flashcard-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .card-scene {
+      perspective: 1100px;
+      margin-bottom: 20px;
+    }
+
+    .flashcard {
+      position: relative;
+      width: 100%;
+      min-height: 270px;
+      transform-style: preserve-3d;
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+      cursor: pointer;
+    }
+
+    .flashcard.flipped {
+      transform: rotateY(180deg);
+    }
+
+    .card-face {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 12px;
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+      background: var(--accent-soft);
+      border-color: var(--accent);
+    }
+
+    .card-label {
+      position: absolute;
+      top: 14px;
+      left: 16px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+    }
+
+    .card-speak {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      padding: 6px 10px;
+      font-size: 0.82rem;
+    }
+
+    .card-main {
+      font-size: clamp(1.35rem, 3vw, 2rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      max-width: 680px;
+    }
+
+    .card-note {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      max-width: 620px;
+    }
+
+    .card-hint-footer {
+      position: absolute;
+      bottom: 12px;
+      font-size: 0.76rem;
+      color: var(--text-muted);
+    }
+
+    .flashcard-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .rate-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .kbd {
+      display: inline-block;
+      padding: 1px 6px;
+      font-size: 0.72rem;
+      border-radius: 5px;
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+      color: var(--text-muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+
+    .shortcuts-tip {
+      margin-top: 14px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* Quiz */
+    .quiz-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .quiz-prompt {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .quiz-prompt .q-term {
+      font-size: clamp(1.25rem, 2.8vw, 1.75rem);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .quiz-prompt .q-sub {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .quiz-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: 640px) {
+      .quiz-options {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .quiz-opt {
+      text-align: left;
+      justify-content: flex-start;
+      padding: 14px 16px;
+      min-height: 58px;
+      line-height: 1.35;
+      font-weight: 500;
+      border-radius: 12px;
+      position: relative;
+    }
+
+    .quiz-opt .opt-num {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      background: var(--surface-2);
+      border-radius: 6px;
+      padding: 2px 7px;
+      flex-shrink: 0;
+    }
+
+    .quiz-opt.correct {
+      background: var(--success-soft);
+      border-color: var(--success);
+      color: var(--success);
+    }
+
+    .quiz-opt.wrong {
+      background: var(--danger-soft);
+      border-color: var(--danger);
+      color: var(--danger);
+    }
+
+    .quiz-feedback {
+      min-height: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* Typing mode */
+    .typing-box {
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    .typing-input-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .typing-input-row input {
+      flex: 1;
+      font-size: 1rem;
+      padding: 12px 14px;
+    }
+
+    .typing-hint {
+      margin-top: 10px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.95rem;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+      min-height: 22px;
+    }
+
+    .typing-result {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 0.92rem;
+      display: none;
+    }
+
+    .typing-result.show { display: block; }
+    .typing-result.ok { background: var(--success-soft); color: var(--success); }
+    .typing-result.err { background: var(--danger-soft); color: var(--danger); }
+
+    /* Glossary */
+    .glossary-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .glossary-toolbar input[type="text"] {
+      flex: 1;
+      min-width: 220px;
+    }
+
+    .glossary-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .word-row {
+      display: grid;
+      grid-template-columns: minmax(180px, 1.1fr) minmax(220px, 1.8fr) auto;
+      gap: 12px;
+      align-items: center;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--surface-2);
+      transition: border-color 0.15s ease;
+    }
+
+    @media (max-width: 700px) {
+      .word-row {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+    }
+
+    .word-row:hover {
+      border-color: var(--accent);
+    }
+
+    .word-en {
+      font-weight: 700;
+      font-size: 0.98rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .word-cat {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .word-ru {
+      font-size: 0.92rem;
+      color: var(--text);
+      transition: filter 0.18s ease;
+    }
+
+    .word-ru.blurred {
+      filter: blur(6px);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .word-ru.blurred:hover {
+      filter: blur(0);
+    }
+
+    .word-note-inline {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .word-controls {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .status-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      display: inline-block;
+      background: var(--border);
+    }
+    .status-dot.mastered { background: var(--success); }
+    .status-dot.learning { background: var(--warning); }
+
+    .mini-btn {
+      padding: 5px 9px;
+      font-size: 0.78rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="brand">
+        <h1>Travel &amp; Cities — Vocabulary Trainer</h1>
+        <p>93 слова и выражения · карточки, тест, письмо и словарь</p>
+      </div>
+      <div class="header-actions">
+        <button id="dirToggle" title="Переключить направление перевода">EN → RU</button>
+        <button id="themeToggle" title="Светлая / тёмная тема">🌙 Тема</button>
+        <button id="resetProgress" class="ghost" title="Сбросить прогресс">Сброс</button>
+      </div>
+    </header>
+
+    <section class="progress-panel">
+      <div class="progress-top">
+        <strong id="progressSummary">Выучено: 0 из 93 (0%)</strong>
+        <div class="stats-badges">
+          <span class="badge mastered" id="statMastered">✓ Выучено: 0</span>
+          <span class="badge learning" id="statLearning">↻ Повторить: 0</span>
+          <span class="badge" id="statNew">○ Новые: 93</span>
+        </div>
+      </div>
+      <div class="bar-track">
+        <div class="bar-mastered" id="barMastered" style="width: 0%"></div>
+        <div class="bar-learning" id="barLearning" style="width: 0%"></div>
+      </div>
+    </section>
+
+    <div class="controls-bar">
+      <nav class="tabs" role="tablist">
+        <button class="tab-btn active" data-mode="flashcards">Карточки</button>
+        <button class="tab-btn" data-mode="quiz">Тест</button>
+        <button class="tab-btn" data-mode="typing">Письмо</button>
+        <button class="tab-btn" data-mode="glossary">Словарь</button>
+      </nav>
+      <button id="shuffleBtn">🔀 Перемешать</button>
+    </div>
+
+    <div class="filters-row">
+      <select id="categoryFilter" aria-label="Категория">
+        <option value="all">Все категории (93)</option>
+        <option value="planning">Планирование и поездки (39)</option>
+        <option value="cities">Города и впечатления (34)</option>
+        <option value="travel_types">Виды путешествий (18)</option>
+        <option value="booking">Бронирование (2)</option>
+      </select>
+
+      <label class="toggle-pill">
+        <input type="checkbox" id="unmasteredOnly" />
+        Только невыученные
+      </label>
+    </div>
+
+    <main class="stage" id="stage"></main>
+  </div>
+
+  <script>
+    const CATEGORIES = {
+      planning: "Планирование и поездки",
+      cities: "Города и впечатления",
+      travel_types: "Виды путешествий",
+      booking: "Бронирование"
+    };
+
+    const VOCAB = [
+      // Group 1: Planning, accommodation & living abroad (39)
+      { id: 1, cat: "planning", en: "accommodation", ru: "жильё, размещение", note: "гостиница, апартаменты" },
+      { id: 2, cat: "planning", en: "ads", ru: "объявления, реклама", note: "сокр. от advertisements" },
+      { id: 3, cat: "planning", en: "appointment", ru: "назначенная встреча, запись", note: "на определённое время" },
+      { id: 4, cat: "planning", en: "brochure", ru: "брошюра, рекламный буклет", note: "" },
+      { id: 5, cat: "planning", en: "voucher", ru: "ваучер, путёвка", note: "документ, подтверждающий бронь/оплату услуг" },
+      { id: 6, cat: "planning", en: "comprehensive information", ru: "исчерпывающая (всесторонняя, полная) информация", note: "" },
+      { id: 7, cat: "planning", en: "destination", ru: "пункт назначения, место прибытия", note: "" },
+      { id: 8, cat: "planning", en: "folder", ru: "папка; рекламный буклет/проспект", note: "" },
+      { id: 9, cat: "planning", en: "high season", ru: "высокий сезон, разгар сезона", note: "пик наплыва туристов" },
+      { id: 10, cat: "planning", en: "low season", ru: "низкий сезон, мёртвый сезон", note: "период спада туризма" },
+      { id: 11, cat: "planning", en: "ready-made tour package", ru: "готовый (стандартный) турпакет", note: "" },
+      { id: 12, cat: "planning", en: "tailor-made tour package", ru: "индивидуальный турпакет", note: "составленный на заказ под клиента" },
+      { id: 13, cat: "planning", en: "discount", ru: "скидка", note: "" },
+      { id: 14, cat: "planning", en: "to rent out one's home", ru: "сдавать своё жильё в аренду", note: "" },
+      { id: 15, cat: "planning", en: "to flee the nest", ru: "выпорхнуть из гнезда", note: "начать жить отдельно от родителей" },
+      { id: 16, cat: "planning", en: "to make a break from the routine", ru: "вырваться из рутины / повседневности", note: "" },
+      { id: 17, cat: "planning", en: "to travel the globe", ru: "путешествовать по всему миру", note: "" },
+      { id: 18, cat: "planning", en: "to visit exotic places", ru: "посещать экзотические места", note: "" },
+      { id: 19, cat: "planning", en: "round-the-world air tickets", ru: "кругосветные авиабилеты", note: "" },
+      { id: 20, cat: "planning", en: "to stay with somebody", ru: "останавливаться (гостить, жить) у кого-либо", note: "" },
+      { id: 21, cat: "planning", en: "motel", ru: "мотель", note: "придорожная гостиница" },
+      { id: 22, cat: "planning", en: "guest house", ru: "гостевой дом, пансион", note: "" },
+      { id: 23, cat: "planning", en: "rickshaw", ru: "рикша", note: "повозка или её тягловый водитель" },
+      { id: 24, cat: "planning", en: "to be inoculated against", ru: "быть привитым от / сделать прививку против", note: "болезни" },
+      { id: 25, cat: "planning", en: "misgiving", ru: "опасение, сомнение, дурное предчувствие", note: "" },
+      { id: 26, cat: "planning", en: "to come to a head", ru: "обостриться, достичь апогея / критической точки", note: "" },
+      { id: 27, cat: "planning", en: "to miss one's near and dear ones", ru: "скучать по своим родным и близким", note: "" },
+      { id: 28, cat: "planning", en: "to be homesick", ru: "тосковать по дому", note: "" },
+      { id: 29, cat: "planning", en: "pull of home", ru: "тяга к родному дому", note: "" },
+      { id: 30, cat: "planning", en: "to live out of something", ru: "жить «на чемоданах»", note: "обычно to live out of a suitcase" },
+      { id: 31, cat: "planning", en: "to lack home comforts", ru: "быть лишённым привычного домашнего уюта / комфорта", note: "" },
+      { id: 32, cat: "planning", en: "to impose constraints", ru: "налагать / устанавливать ограничения", note: "" },
+      { id: 33, cat: "planning", en: "to swap homes with somebody", ru: "меняться домами с кем-либо", note: "по программе обмена жильём" },
+      { id: 34, cat: "planning", en: "a dream destination", ru: "направление мечты", note: "желанное место поездки" },
+      { id: 35, cat: "planning", en: "a financial winner", ru: "финансово выгодный / выигрышный вариант", note: "" },
+      { id: 36, cat: "planning", en: "to become pen pals", ru: "стать друзьями по переписке", note: "" },
+      { id: 37, cat: "planning", en: "to put somebody in touch with", ru: "связать (соединить) кого-либо с кем-либо", note: "" },
+      { id: 38, cat: "planning", en: "to match requirements", ru: "соответствовать требованиям", note: "" },
+      { id: 39, cat: "planning", en: "to make failsafe arrangements", ru: "всё надёжно организовать / предусмотреть безотказный план", note: "" },
+
+      // Group 2: Cities, places & impressions (34)
+      { id: 40, cat: "cities", en: "metropolis", ru: "мегаполис", note: "" },
+      { id: 41, cat: "cities", en: "sightseeing", ru: "осмотр достопримечательностей", note: "" },
+      { id: 42, cat: "cities", en: "city centre", ru: "центр города", note: "" },
+      { id: 43, cat: "cities", en: "magnificent", ru: "великолепный / величественный", note: "" },
+      { id: 44, cat: "cities", en: "charm", ru: "очарование / шарм", note: "" },
+      { id: 45, cat: "cities", en: "local", ru: "местный", note: "" },
+      { id: 46, cat: "cities", en: "peaceful", ru: "спокойный / мирный", note: "" },
+      { id: 47, cat: "cities", en: "gem", ru: "жемчужина / ценная находка", note: "" },
+      { id: 48, cat: "cities", en: "litter", ru: "мусор", note: "" },
+      { id: 49, cat: "cities", en: "excursion", ru: "экскурсия", note: "" },
+      { id: 50, cat: "cities", en: "nightlife", ru: "ночная жизнь", note: "" },
+      { id: 51, cat: "cities", en: "touristy", ru: "переполненный туристами / типично туристический", note: "" },
+      { id: 52, cat: "cities", en: "fresh air", ru: "свежий воздух", note: "" },
+      { id: 53, cat: "cities", en: "tranquil", ru: "спокойный / безмятежный", note: "" },
+      { id: 54, cat: "cities", en: "cosmopolitan", ru: "космополитичный / интернациональный", note: "" },
+      { id: 55, cat: "cities", en: "stunning", ru: "потрясающий / сногсшибательный", note: "" },
+      { id: 56, cat: "cities", en: "own style", ru: "собственный стиль", note: "" },
+      { id: 57, cat: "cities", en: "special", ru: "особенный / специальный", note: "" },
+      { id: 58, cat: "cities", en: "soak up", ru: "впитывать", note: "атмосферу, впечатления, солнце" },
+      { id: 59, cat: "cities", en: "skyscraper", ru: "небоскрёб", note: "" },
+      { id: 60, cat: "cities", en: "suburb", ru: "пригород", note: "" },
+      { id: 61, cat: "cities", en: "gorgeous", ru: "великолепный / прекрасный", note: "" },
+      { id: 62, cat: "cities", en: "rural", ru: "сельский / деревенский", note: "" },
+      { id: 63, cat: "cities", en: "urban", ru: "городской", note: "" },
+      { id: 64, cat: "cities", en: "pollution", ru: "загрязнение", note: "окружающей среды" },
+      { id: 65, cat: "cities", en: "public transport", ru: "общественный транспорт", note: "" },
+      { id: 66, cat: "cities", en: "world-famous", ru: "всемирно известный", note: "" },
+      { id: 67, cat: "cities", en: "spectacular", ru: "захватывающий / зрелищный", note: "" },
+      { id: 68, cat: "cities", en: "fascinating", ru: "увлекательный / пленительный", note: "" },
+      { id: 69, cat: "cities", en: "traffic jam", ru: "дорожная пробка", note: "" },
+      { id: 70, cat: "cities", en: "ugly", ru: "уродливый / некрасивый", note: "" },
+      { id: 71, cat: "cities", en: "moving", ru: "трогательный / волнующий", note: "" },
+      { id: 72, cat: "cities", en: "original", ru: "оригинальный / самобытный", note: "" },
+      { id: 73, cat: "cities", en: "catering", ru: "кейтеринг / общественное питание", note: "" },
+
+      // Group 3: Types of travel & movement (18)
+      { id: 74, cat: "travel_types", en: "journey", ru: "поездка, путешествие", note: "фокус на самом процессе пути из точки А в точку Б, часто долгой наземной — a 10-hour train journey" },
+      { id: 75, cat: "travel_types", en: "voyage", ru: "длительное морское или космическое путешествие", note: "плавание на корабле по морю/океану, дальняя экспедиция — a voyage across the Atlantic" },
+      { id: 76, cat: "travel_types", en: "flight", ru: "полёт, рейс, авиаперелёт", note: "передвижение по воздуху на самолёте или полёт птицы — have a nice flight" },
+      { id: 77, cat: "travel_types", en: "cruise", ru: "круиз, морская увеселительная поездка", note: "отдых на борту лайнера с остановками в портах — a Caribbean cruise" },
+      { id: 78, cat: "travel_types", en: "trip", ru: "поездка, вылазка", note: "обычно короткая поездка туда и обратно с конкретной целью — a business trip" },
+      { id: 79, cat: "travel_types", en: "tour", ru: "тур, экскурсионная поездка, гастроли", note: "круговой маршрут с осмотром нескольких мест или турне артистов — a guided tour of London" },
+      { id: 80, cat: "travel_types", en: "hitch-hiking", ru: "автостоп", note: "бюджетное путешествие на попутных машинах — traveling around Europe by hitch-hiking" },
+      { id: 81, cat: "travel_types", en: "wanderings", ru: "странствия, скитания", note: "блуждания без чёткой цели или маршрута" },
+      { id: 82, cat: "travel_types", en: "tourism", ru: "туризм", note: "путешествия для отдыха и развлечений" },
+      { id: 83, cat: "travel_types", en: "migration", ru: "миграция, переселение", note: "смена места обитания людей или животных" },
+      { id: 84, cat: "travel_types", en: "itinerary", ru: "маршрут", note: "детальный план поездки с графиком" },
+      { id: 85, cat: "travel_types", en: "expedition", ru: "экспедиция", note: "организованный поход с научной или исследовательской целью" },
+      { id: 86, cat: "travel_types", en: "stage", ru: "этап пути, перегон", note: "часть маршрута между двумя остановками" },
+      { id: 87, cat: "travel_types", en: "passage", ru: "морской переход, рейс", note: "также билет / право проезда на судне" },
+      { id: 88, cat: "travel_types", en: "crossing", ru: "переправа, пересечение", note: "водной преграды: реки, пролива, моря" },
+      { id: 89, cat: "travel_types", en: "pilgrimage", ru: "паломничество", note: "к святыням или почитаемым местам" },
+      { id: 90, cat: "travel_types", en: "sail", ru: "плавание под парусом", note: "морская прогулка на яхте или корабле" },
+      { id: 91, cat: "travel_types", en: "caravan", ru: "караван", note: "вереница людей или вьючных животных; в брит. — дом-автоприцеп" },
+
+      // Group 4: Booking & timing (2)
+      { id: 92, cat: "booking", en: "well in advance", ru: "сильно заранее", note: "" },
+      { id: 93, cat: "booking", en: "to be fully booked", ru: "всё заполнено / мест нет", note: "" }
+    ];
+
+    const STORAGE_KEY = "travel_vocab_progress_v1";
+    const THEME_KEY = "travel_vocab_theme_v1";
+
+    // State
+    let progress = loadProgress(); // { [id]: 'new' | 'learning' | 'mastered' }
+    let mode = "flashcards";
+    let direction = "en-ru"; // 'en-ru' | 'ru-en'
+    let category = "all";
+    let unmasteredOnly = false;
+    let deck = [];
+    let currentIndex = 0;
+    let isFlipped = false;
+
+    // Quiz state
+    let quizScore = 0;
+    let quizTotal = 0;
+    let quizStreak = 0;
+    let quizAnswered = false;
+    let quizOptions = [];
+    let quizAutoNextTimer = null;
+
+    function clearQuizTimer() {
+      if (quizAutoNextTimer !== null) {
+        clearTimeout(quizAutoNextTimer);
+        quizAutoNextTimer = null;
+      }
+    }
+
+    // Typing state
+    let typingHintLevel = 0;
+    let typingChecked = false;
+
+    // Glossary state
+    let glossarySearch = "";
+    let glossaryStatus = "all";
+    let glossaryBlur = false;
+
+    function loadProgress() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+      } catch {
+        return {};
+      }
+    }
+
+    function saveProgress() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+      updateStatsUI();
+    }
+
+    function getStatus(id) {
+      return progress[id] || "new";
+    }
+
+    function setStatus(id, status) {
+      if (status === "new") delete progress[id];
+      else progress[id] = status;
+      saveProgress();
+    }
+
+    // Speech synthesis with macOS anti-click handling
+    let cachedVoice = null;
+    let activeUtterance = null;
+    let speakDelayTimer = null;
+    let audioKeepAliveCtx = null;
+    let audioKeepAliveNode = null;
+    let audioKeepAliveStopTimer = null;
+
+    function pickEnglishVoice() {
+      const voices = window.speechSynthesis.getVoices();
+      if (!voices || voices.length === 0) return null;
+      const preferred = [
+        "Google US English",
+        "Google UK English Female",
+        "Google UK English Male",
+        "Samantha",
+        "Daniel",
+        "Alex",
+        "Karen",
+        "Moira"
+      ];
+      for (const name of preferred) {
+        const found = voices.find(v => v.name === name);
+        if (found) return found;
+      }
+      return (
+        voices.find(v => v.lang === "en-US" && !v.name.includes("Compact")) ||
+        voices.find(v => v.lang.startsWith("en-US")) ||
+        voices.find(v => v.lang.startsWith("en")) ||
+        null
+      );
+    }
+
+    if ("speechSynthesis" in window) {
+      cachedVoice = pickEnglishVoice();
+      window.speechSynthesis.onvoiceschanged = () => {
+        cachedVoice = pickEnglishVoice();
+      };
+    }
+
+    // Keep audio output stream open briefly to prevent macOS CoreAudio close-pop
+    function keepAudioAliveBriefly() {
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+        if (!audioKeepAliveCtx) {
+          audioKeepAliveCtx = new AudioCtx();
+        }
+        if (audioKeepAliveCtx.state === "suspended") {
+          audioKeepAliveCtx.resume();
+        }
+        if (!audioKeepAliveNode) {
+          const buffer = audioKeepAliveCtx.createBuffer(1, audioKeepAliveCtx.sampleRate, audioKeepAliveCtx.sampleRate);
+          const source = audioKeepAliveCtx.createBufferSource();
+          source.buffer = buffer;
+          source.loop = true;
+          const gain = audioKeepAliveCtx.createGain();
+          gain.gain.value = 0.00001;
+          source.connect(gain);
+          gain.connect(audioKeepAliveCtx.destination);
+          source.start();
+          audioKeepAliveNode = source;
+        }
+        clearTimeout(audioKeepAliveStopTimer);
+        audioKeepAliveStopTimer = setTimeout(() => {
+          if (audioKeepAliveNode) {
+            try { audioKeepAliveNode.stop(); } catch {}
+            audioKeepAliveNode = null;
+          }
+          if (audioKeepAliveCtx && audioKeepAliveCtx.state === "running") {
+            audioKeepAliveCtx.suspend().catch(() => {});
+          }
+        }, 30000);
+      } catch {
+        // Ignore if AudioContext is unavailable
+      }
+    }
+
+    function speak(text) {
+      if (!("speechSynthesis" in window)) return;
+      clearTimeout(speakDelayTimer);
+      keepAudioAliveBriefly();
+
+      const cleaned = text.replace(/^to\s+/i, "").trim();
+      const phrase = /[.!?]$/.test(cleaned) ? cleaned : `${cleaned}.`;
+
+      const runSpeak = () => {
+        if (!cachedVoice) cachedVoice = pickEnglishVoice();
+        const utter = new SpeechSynthesisUtterance(phrase);
+        if (cachedVoice) {
+          utter.voice = cachedVoice;
+          utter.lang = cachedVoice.lang;
+        } else {
+          utter.lang = "en-US";
+        }
+        utter.rate = 0.95;
+        utter.volume = 0.92;
+        activeUtterance = utter;
+        utter.onend = () => { activeUtterance = null; };
+        utter.onerror = () => { activeUtterance = null; };
+        window.speechSynthesis.speak(utter);
+      };
+
+      if (window.speechSynthesis.speaking || window.speechSynthesis.pending) {
+        window.speechSynthesis.cancel();
+        speakDelayTimer = setTimeout(runSpeak, 60);
+      } else {
+        runSpeak();
+      }
+    }
+
+    function shuffleArray(arr) {
+      const copy = [...arr];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    function getFilteredWords() {
+      return VOCAB.filter(w => {
+        if (category !== "all" && w.cat !== category) return false;
+        if (unmasteredOnly && getStatus(w.id) === "mastered") return false;
+        return true;
+      });
+    }
+
+    function rebuildDeck(shouldShuffle = false) {
+      clearQuizTimer();
+      const filtered = getFilteredWords();
+      deck = shouldShuffle ? shuffleArray(filtered) : [...filtered];
+      currentIndex = 0;
+      isFlipped = false;
+      quizAnswered = false;
+      typingHintLevel = 0;
+      typingChecked = false;
+      if (mode === "quiz" && deck.length > 0) prepareQuizOptions();
+      render();
+    }
+
+    function updateStatsUI() {
+      const total = VOCAB.length;
+      let mastered = 0, learning = 0;
+      for (const w of VOCAB) {
+        const st = getStatus(w.id);
+        if (st === "mastered") mastered++;
+        else if (st === "learning") learning++;
+      }
+      const news = total - mastered - learning;
+      const pct = Math.round((mastered / total) * 100);
+      document.getElementById("progressSummary").textContent = `Выучено: ${mastered} из ${total} (${pct}%)`;
+      document.getElementById("statMastered").textContent = `✓ Выучено: ${mastered}`;
+      document.getElementById("statLearning").textContent = `↻ Повторить: ${learning}`;
+      document.getElementById("statNew").textContent = `○ Новые: ${news}`;
+      document.getElementById("barMastered").style.width = `${(mastered / total) * 100}%`;
+      document.getElementById("barLearning").style.width = `${(learning / total) * 100}%`;
+    }
+
+    function escapeHtml(str) {
+      return str.replace(/[&<>"']/g, m => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[m]));
+    }
+
+    // --- FLASHCARDS ---
+    function renderFlashcards(stage) {
+      if (deck.length === 0) {
+        stage.innerHTML = `
+          <div class="empty-state">
+            <h3>Все слова в этой выборке выучены! 🎉</h3>
+            <p>Снимите фильтр «Только невыученные» или выберите другую категорию.</p>
+          </div>`;
+        return;
+      }
+
+      if (currentIndex >= deck.length) currentIndex = 0;
+      const item = deck[currentIndex];
+      const st = getStatus(item.id);
+      const stLabel = st === "mastered" ? "Выучено" : st === "learning" ? "Повторить" : "Новое";
+      const stClass = st === "mastered" ? "mastered" : st === "learning" ? "learning" : "";
+
+      const frontMain = direction === "en-ru" ? item.en : item.ru;
+      const frontSub = direction === "en-ru" ? "" : (item.note ? item.note : "");
+      const backMain = direction === "en-ru" ? item.ru : item.en;
+      const backSub = direction === "en-ru" ? (item.note ? item.note : "") : "";
+
+      stage.innerHTML = `
+        <div class="flashcard-meta">
+          <span>Карточка <strong>${currentIndex + 1}</strong> из <strong>${deck.length}</strong> · ${CATEGORIES[item.cat]}</span>
+          <span class="badge ${stClass}">${stLabel}</span>
+        </div>
+
+        <div class="card-scene">
+          <div class="flashcard ${isFlipped ? "flipped" : ""}" id="flashcardEl">
+            <div class="card-face card-front">
+              <span class="card-label">${direction === "en-ru" ? "English" : "Русский"}</span>
+              ${direction === "en-ru" ? `<button class="card-speak" id="speakFront" title="Произнести (S)">🔊</button>` : ""}
+              <div class="card-main">${escapeHtml(frontMain)}</div>
+              ${frontSub ? `<div class="card-note">${escapeHtml(frontSub)}</div>` : ""}
+              <div class="card-hint-footer">Нажмите на карточку или <span class="kbd">Space</span>, чтобы перевернуть</div>
+            </div>
+            <div class="card-face card-back">
+              <span class="card-label">${direction === "en-ru" ? "Перевод" : "English"}</span>
+              <button class="card-speak" id="speakBack" title="Произнести (S)">🔊</button>
+              <div class="card-main">${escapeHtml(backMain)}</div>
+              ${backSub ? `<div class="card-note">${escapeHtml(backSub)}</div>` : ""}
+              <div class="card-hint-footer">Оцените, насколько хорошо вы помните слово</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flashcard-actions">
+          <button id="prevCard">← Назад</button>
+          <div class="rate-actions">
+            <button id="markLearning" class="warning">↻ Повторить <span class="kbd">1</span></button>
+            <button id="markMastered" class="success">✓ Знаю <span class="kbd">2</span></button>
+          </div>
+          <button id="nextCard">Вперёд →</button>
+        </div>
+
+        <div class="shortcuts-tip">
+          Клавиши: <span class="kbd">Space</span> перевернуть · <span class="kbd">1</span> повторить · <span class="kbd">2</span> знаю · <span class="kbd">←</span>/<span class="kbd">→</span> навигация · <span class="kbd">S</span> озвучить
+        </div>
+      `;
+
+      document.getElementById("flashcardEl").addEventListener("click", e => {
+        if (e.target.closest("button")) return;
+        isFlipped = !isFlipped;
+        document.getElementById("flashcardEl").classList.toggle("flipped", isFlipped);
+      });
+
+      const spFront = document.getElementById("speakFront");
+      if (spFront) spFront.addEventListener("click", e => { e.stopPropagation(); speak(item.en); });
+      document.getElementById("speakBack").addEventListener("click", e => { e.stopPropagation(); speak(item.en); });
+
+      document.getElementById("prevCard").addEventListener("click", () => stepCard(-1));
+      document.getElementById("nextCard").addEventListener("click", () => stepCard(1));
+      document.getElementById("markLearning").addEventListener("click", () => rateCard("learning"));
+      document.getElementById("markMastered").addEventListener("click", () => rateCard("mastered"));
+    }
+
+    function stepCard(delta) {
+      if (deck.length === 0) return;
+      currentIndex = (currentIndex + delta + deck.length) % deck.length;
+      isFlipped = false;
+      render();
+    }
+
+    function rateCard(status) {
+      if (deck.length === 0) return;
+      const item = deck[currentIndex];
+      setStatus(item.id, status);
+      if (unmasteredOnly && status === "mastered") {
+        deck.splice(currentIndex, 1);
+        if (currentIndex >= deck.length) currentIndex = 0;
+      } else {
+        currentIndex = (currentIndex + 1) % deck.length;
+      }
+      isFlipped = false;
+      render();
+    }
+
+    // --- QUIZ ---
+    function prepareQuizOptions() {
+      const target = deck[currentIndex];
+      const sameCat = VOCAB.filter(w => w.id !== target.id && w.cat === target.cat);
+      const others = VOCAB.filter(w => w.id !== target.id && w.cat !== target.cat);
+      const distractors = [...shuffleArray(sameCat), ...shuffleArray(others)].slice(0, 3);
+      quizOptions = shuffleArray([target, ...distractors]);
+      quizAnswered = false;
+    }
+
+    function renderQuiz(stage) {
+      if (deck.length === 0) {
+        stage.innerHTML = `
+          <div class="empty-state">
+            <h3>Нет слов для теста</h3>
+            <p>Измените фильтры, чтобы продолжить тренировку.</p>
+          </div>`;
+        return;
+      }
+
+      if (currentIndex >= deck.length) currentIndex = 0;
+      if (quizOptions.length !== 4 || !quizOptions.some(o => o.id === deck[currentIndex].id)) {
+        prepareQuizOptions();
+      }
+
+      const target = deck[currentIndex];
+      const qMain = direction === "en-ru" ? target.en : target.ru;
+      const qSub = direction === "en-ru" ? CATEGORIES[target.cat] : (target.note ? target.note : CATEGORIES[target.cat]);
+
+      stage.innerHTML = `
+        <div class="quiz-header">
+          <span style="font-size:0.88rem;color:var(--text-muted)">Вопрос <strong>${currentIndex + 1}</strong> из <strong>${deck.length}</strong></span>
+          <div class="stats-badges">
+            <span class="badge accent">Счёт: ${quizScore} / ${quizTotal}</span>
+            <span class="badge mastered">Серия: ${quizStreak} 🔥</span>
+          </div>
+        </div>
+
+        <div class="quiz-prompt">
+          <div class="q-term">${escapeHtml(qMain)}</div>
+          <div class="q-sub">${escapeHtml(qSub)}</div>
+          ${direction === "en-ru" ? `<div style="margin-top:10px"><button id="quizSpeak" class="mini-btn">🔊 Озвучить</button></div>` : ""}
+        </div>
+
+        <div class="quiz-options" id="quizOptions">
+          ${quizOptions.map((opt, idx) => {
+            const label = direction === "en-ru" ? opt.ru : opt.en;
+            return `<button class="quiz-opt" data-id="${opt.id}" data-idx="${idx}">
+              <span class="opt-num">${idx + 1}</span>
+              <span>${escapeHtml(label)}</span>
+            </button>`;
+          }).join("")}
+        </div>
+
+        <div class="quiz-feedback" id="quizFeedback">
+          <span style="font-size:0.84rem;color:var(--text-muted)">Выберите правильный вариант (клавиши 1–4)</span>
+        </div>
+      `;
+
+      const qs = document.getElementById("quizSpeak");
+      if (qs) qs.addEventListener("click", () => speak(target.en));
+
+      document.querySelectorAll(".quiz-opt").forEach(btn => {
+        btn.addEventListener("click", () => handleQuizAnswer(Number(btn.dataset.id)));
+      });
+    }
+
+    function handleQuizAnswer(chosenId) {
+      if (quizAnswered) return;
+      quizAnswered = true;
+      const target = deck[currentIndex];
+      const isCorrect = chosenId === target.id;
+      quizTotal++;
+      if (isCorrect) {
+        quizScore++;
+        quizStreak++;
+        if (getStatus(target.id) !== "mastered") setStatus(target.id, "mastered");
+      } else {
+        quizStreak = 0;
+        setStatus(target.id, "learning");
+      }
+
+      document.querySelectorAll(".quiz-opt").forEach(btn => {
+        const id = Number(btn.dataset.id);
+        btn.disabled = true;
+        if (id === target.id) btn.classList.add("correct");
+        else if (id === chosenId) btn.classList.add("wrong");
+      });
+
+      const fb = document.getElementById("quizFeedback");
+      const noteText = target.note ? ` <span style="color:var(--text-muted)">(${escapeHtml(target.note)})</span>` : "";
+      fb.innerHTML = `
+        <div>
+          <strong style="color:${isCorrect ? "var(--success)" : "var(--danger)"}">
+            ${isCorrect ? "✓ Верно!" : "✗ Неверно."}
+          </strong>
+          <span>${escapeHtml(target.en)} — ${escapeHtml(target.ru)}${noteText}</span>
+        </div>
+        <button id="quizNext" class="primary">Дальше →</button>
+      `;
+
+      if (direction === "ru-en") speak(target.en);
+      document.getElementById("quizNext").addEventListener("click", nextQuizQuestion);
+
+      if (isCorrect) {
+        clearQuizTimer();
+        quizAutoNextTimer = setTimeout(() => {
+          quizAutoNextTimer = null;
+          nextQuizQuestion();
+        }, 700);
+      }
+    }
+
+    function nextQuizQuestion() {
+      clearQuizTimer();
+      if (deck.length === 0) return;
+      if (unmasteredOnly && getStatus(deck[currentIndex].id) === "mastered") {
+        deck.splice(currentIndex, 1);
+        if (currentIndex >= deck.length) currentIndex = 0;
+      } else {
+        currentIndex = (currentIndex + 1) % deck.length;
+      }
+      if (deck.length > 0) prepareQuizOptions();
+      render();
+    }
+
+    // --- TYPING MODE ---
+    function normalizeAnswer(str) {
+      return str
+        .toLowerCase()
+        .replace(/[’`]/g, "'")
+        .replace(/\s+/g, " ")
+        .trim();
+    }
+
+    function isTypingMatch(userRaw, targetRaw) {
+      const u = normalizeAnswer(userRaw);
+      const t = normalizeAnswer(targetRaw);
+      if (!u) return false;
+      if (u === t) return true;
+      // Allow omitting leading "to " or "a "
+      const stripPrefix = s => s.replace(/^(to|a)\s+/i, "");
+      if (stripPrefix(u) === stripPrefix(t)) return true;
+      // Allow hyphen/space equivalence (e.g. hitch hiking / hitch-hiking)
+      if (stripPrefix(u).replace(/-/g, " ") === stripPrefix(t).replace(/-/g, " ")) return true;
+      return false;
+    }
+
+    function buildHint(en, level) {
+      const words = en.split(" ");
+      return words.map(w => {
+        if (level === 1) {
+          return w[0] + "•".repeat(Math.max(0, w.length - 1));
+        }
+        const reveal = Math.min(w.length, Math.ceil(w.length * 0.5));
+        return w.slice(0, reveal) + "•".repeat(Math.max(0, w.length - reveal));
+      }).join(" ");
+    }
+
+    function renderTyping(stage) {
+      if (deck.length === 0) {
+        stage.innerHTML = `
+          <div class="empty-state">
+            <h3>Нет слов для тренировки письма</h3>
+            <p>Снимите фильтр «Только невыученные» или выберите другую категорию.</p>
+          </div>`;
+        return;
+      }
+
+      if (currentIndex >= deck.length) currentIndex = 0;
+      const item = deck[currentIndex];
+
+      stage.innerHTML = `
+        <div class="flashcard-meta">
+          <span>Слово <strong>${currentIndex + 1}</strong> из <strong>${deck.length}</strong> · ${CATEGORIES[item.cat]}</span>
+          <span class="badge">Введите английский вариант</span>
+        </div>
+
+        <div class="typing-box">
+          <div class="quiz-prompt">
+            <div class="q-term">${escapeHtml(item.ru)}</div>
+            ${item.note ? `<div class="q-sub">${escapeHtml(item.note)}</div>` : ""}
+          </div>
+
+          <div class="typing-input-row">
+            <input type="text" id="typingInput" placeholder="Введите слово или фразу на английском..." autocomplete="off" spellcheck="false" />
+            <button id="checkTyping" class="primary">Проверить</button>
+          </div>
+
+          <div class="typing-hint" id="typingHint"></div>
+          <div class="typing-result" id="typingResult"></div>
+
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px;flex-wrap:wrap;gap:8px;">
+            <div style="display:flex;gap:8px;">
+              <button id="hintBtn">💡 Подсказка</button>
+              <button id="revealBtn" class="ghost">Показать ответ</button>
+            </div>
+            <div style="display:flex;gap:8px;">
+              <button id="prevType">← Назад</button>
+              <button id="nextType">Дальше →</button>
+            </div>
+          </div>
+        </div>
+      `;
+
+      const input = document.getElementById("typingInput");
+      const hintEl = document.getElementById("typingHint");
+      const resultEl = document.getElementById("typingResult");
+
+      typingHintLevel = 0;
+      typingChecked = false;
+      input.focus();
+
+      function check() {
+        if (typingChecked) {
+          nextTyping();
+          return;
+        }
+        const ok = isTypingMatch(input.value, item.en);
+        typingChecked = true;
+        resultEl.className = `typing-result show ${ok ? "ok" : "err"}`;
+        if (ok) {
+          setStatus(item.id, "mastered");
+          resultEl.innerHTML = `✓ <strong>Верно!</strong> Правильная форма: <strong>${escapeHtml(item.en)}</strong> <button class="mini-btn" id="typeSpeak" style="margin-left:8px">🔊</button>`;
+        } else {
+          setStatus(item.id, "learning");
+          resultEl.innerHTML = `✗ <strong>Не совсем.</strong> Правильный ответ: <strong>${escapeHtml(item.en)}</strong> <button class="mini-btn" id="typeSpeak" style="margin-left:8px">🔊</button>`;
+        }
+        speak(item.en);
+        document.getElementById("typeSpeak").addEventListener("click", () => speak(item.en));
+        document.getElementById("checkTyping").textContent = "Дальше →";
+      }
+
+      function nextTyping() {
+        if (unmasteredOnly && getStatus(item.id) === "mastered") {
+          deck.splice(currentIndex, 1);
+          if (currentIndex >= deck.length) currentIndex = 0;
+        } else {
+          currentIndex = (currentIndex + 1) % deck.length;
+        }
+        render();
+      }
+
+      document.getElementById("checkTyping").addEventListener("click", check);
+      input.addEventListener("keydown", e => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          check();
+        }
+      });
+
+      document.getElementById("hintBtn").addEventListener("click", () => {
+        typingHintLevel = Math.min(2, typingHintLevel + 1);
+        hintEl.textContent = buildHint(item.en, typingHintLevel);
+        input.focus();
+      });
+
+      document.getElementById("revealBtn").addEventListener("click", () => {
+        typingChecked = true;
+        setStatus(item.id, "learning");
+        resultEl.className = "typing-result show err";
+        resultEl.innerHTML = `Ответ: <strong>${escapeHtml(item.en)}</strong> <button class="mini-btn" id="typeSpeak" style="margin-left:8px">🔊</button>`;
+        speak(item.en);
+        document.getElementById("typeSpeak").addEventListener("click", () => speak(item.en));
+        document.getElementById("checkTyping").textContent = "Дальше →";
+      });
+
+      document.getElementById("prevType").addEventListener("click", () => {
+        currentIndex = (currentIndex - 1 + deck.length) % deck.length;
+        render();
+      });
+      document.getElementById("nextType").addEventListener("click", nextTyping);
+    }
+
+    // --- GLOSSARY ---
+    function renderGlossary(stage) {
+      const q = glossarySearch.trim().toLowerCase();
+      const list = getFilteredWords().filter(w => {
+        if (glossaryStatus !== "all" && getStatus(w.id) !== glossaryStatus) return false;
+        if (!q) return true;
+        return (
+          w.en.toLowerCase().includes(q) ||
+          w.ru.toLowerCase().includes(q) ||
+          w.note.toLowerCase().includes(q)
+        );
+      });
+
+      stage.innerHTML = `
+        <div class="glossary-toolbar">
+          <input type="text" id="glossarySearchInput" placeholder="Поиск по английскому или русскому..." value="${escapeHtml(glossarySearch)}" />
+          <select id="glossaryStatusFilter">
+            <option value="all" ${glossaryStatus === "all" ? "selected" : ""}>Все статусы</option>
+            <option value="new" ${glossaryStatus === "new" ? "selected" : ""}>Новые</option>
+            <option value="learning" ${glossaryStatus === "learning" ? "selected" : ""}>Повторить</option>
+            <option value="mastered" ${glossaryStatus === "mastered" ? "selected" : ""}>Выучено</option>
+          </select>
+          <label class="toggle-pill">
+            <input type="checkbox" id="blurToggle" ${glossaryBlur ? "checked" : ""} />
+            Скрыть переводы
+          </label>
+        </div>
+
+        <div style="font-size:0.82rem;color:var(--text-muted);margin-bottom:10px">
+          Показано слов: <strong>${list.length}</strong>
+        </div>
+
+        <div class="glossary-list" id="glossaryList">
+          ${list.length === 0 ? `<div class="empty-state"><h3>Ничего не найдено</h3></div>` : list.map(w => {
+            const st = getStatus(w.id);
+            const nextSt = st === "mastered" ? "new" : "mastered";
+            return `
+              <div class="word-row">
+                <div>
+                  <div class="word-en">
+                    <span class="status-dot ${st}" title="${st}"></span>
+                    <span>${escapeHtml(w.en)}</span>
+                  </div>
+                  <div class="word-cat">${CATEGORIES[w.cat]}</div>
+                </div>
+                <div class="word-ru ${glossaryBlur ? "blurred" : ""}" title="${glossaryBlur ? "Наведите или нажмите, чтобы увидеть" : ""}">
+                  ${escapeHtml(w.ru)}
+                  ${w.note ? `<span class="word-note-inline">${escapeHtml(w.note)}</span>` : ""}
+                </div>
+                <div class="word-controls">
+                  <button class="mini-btn" data-speak="${escapeHtml(w.en)}" title="Озвучить">🔊</button>
+                  <button class="mini-btn ${st === "mastered" ? "success" : ""}" data-toggle-id="${w.id}" data-next="${nextSt}">
+                    ${st === "mastered" ? "✓ Выучено" : "Отметить"}
+                  </button>
+                </div>
+              </div>
+            `;
+          }).join("")}
+        </div>
+      `;
+
+      const searchEl = document.getElementById("glossarySearchInput");
+      searchEl.addEventListener("input", e => {
+        glossarySearch = e.target.value;
+        const pos = searchEl.selectionStart;
+        render();
+        const fresh = document.getElementById("glossarySearchInput");
+        fresh.focus();
+        fresh.setSelectionRange(pos, pos);
+      });
+
+      document.getElementById("glossaryStatusFilter").addEventListener("change", e => {
+        glossaryStatus = e.target.value;
+        render();
+      });
+
+      document.getElementById("blurToggle").addEventListener("change", e => {
+        glossaryBlur = e.target.checked;
+        render();
+      });
+
+      document.querySelectorAll("[data-speak]").forEach(btn => {
+        btn.addEventListener("click", () => speak(btn.dataset.speak));
+      });
+
+      document.querySelectorAll("[data-toggle-id]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          setStatus(Number(btn.dataset.toggleId), btn.dataset.next);
+          render();
+        });
+      });
+
+      document.querySelectorAll(".word-ru.blurred").forEach(el => {
+        el.addEventListener("click", () => el.classList.toggle("blurred"));
+      });
+    }
+
+    function render() {
+      const stage = document.getElementById("stage");
+      if (mode === "flashcards") renderFlashcards(stage);
+      else if (mode === "quiz") renderQuiz(stage);
+      else if (mode === "typing") renderTyping(stage);
+      else renderGlossary(stage);
+    }
+
+    // --- GLOBAL CONTROLS ---
+    document.querySelectorAll(".tab-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        clearQuizTimer();
+        document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        mode = btn.dataset.mode;
+        isFlipped = false;
+        if (mode === "quiz" && deck.length > 0) prepareQuizOptions();
+        render();
+      });
+    });
+
+    document.getElementById("categoryFilter").addEventListener("change", e => {
+      category = e.target.value;
+      rebuildDeck(false);
+    });
+
+    document.getElementById("unmasteredOnly").addEventListener("change", e => {
+      unmasteredOnly = e.target.checked;
+      rebuildDeck(false);
+    });
+
+    document.getElementById("shuffleBtn").addEventListener("click", () => {
+      rebuildDeck(true);
+    });
+
+    document.getElementById("dirToggle").addEventListener("click", e => {
+      clearQuizTimer();
+      direction = direction === "en-ru" ? "ru-en" : "en-ru";
+      e.target.textContent = direction === "en-ru" ? "EN → RU" : "RU → EN";
+      isFlipped = false;
+      if (mode === "quiz" && deck.length > 0) prepareQuizOptions();
+      render();
+    });
+
+    document.getElementById("resetProgress").addEventListener("click", () => {
+      if (!confirm("Сбросить весь прогресс изучения (все 93 слова станут новыми)?")) return;
+      progress = {};
+      quizScore = 0;
+      quizTotal = 0;
+      quizStreak = 0;
+      saveProgress();
+      rebuildDeck(false);
+    });
+
+    // Theme
+    function applyTheme(theme) {
+      document.documentElement.setAttribute("data-theme", theme);
+      localStorage.setItem(THEME_KEY, theme);
+      document.getElementById("themeToggle").textContent = theme === "dark" ? "☀️ Тема" : "🌙 Тема";
+    }
+
+    const savedTheme = localStorage.getItem(THEME_KEY) || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    applyTheme(savedTheme);
+
+    document.getElementById("themeToggle").addEventListener("click", () => {
+      const current = document.documentElement.getAttribute("data-theme");
+      applyTheme(current === "dark" ? "light" : "dark");
+    });
+
+    // Keyboard shortcuts
+    document.addEventListener("keydown", e => {
+      if (e.target.tagName === "INPUT" || e.target.tagName === "SELECT" || e.target.tagName === "TEXTAREA") return;
+
+      if (mode === "flashcards" && deck.length > 0) {
+        if (e.code === "Space") {
+          e.preventDefault();
+          isFlipped = !isFlipped;
+          const el = document.getElementById("flashcardEl");
+          if (el) el.classList.toggle("flipped", isFlipped);
+        } else if (e.key === "ArrowRight") {
+          stepCard(1);
+        } else if (e.key === "ArrowLeft") {
+          stepCard(-1);
+        } else if (e.key === "1") {
+          rateCard("learning");
+        } else if (e.key === "2") {
+          rateCard("mastered");
+        } else if (e.key.toLowerCase() === "s") {
+          speak(deck[currentIndex].en);
+        }
+      } else if (mode === "quiz" && deck.length > 0) {
+        if (!quizAnswered && ["1", "2", "3", "4"].includes(e.key)) {
+          const idx = Number(e.key) - 1;
+          if (quizOptions[idx]) handleQuizAnswer(quizOptions[idx].id);
+        } else if (quizAnswered && (e.key === "Enter" || e.code === "Space")) {
+          e.preventDefault();
+          nextQuizQuestion();
+        }
+      }
+    });
+
+    // Init
+    updateStatsUI();
+    rebuildDeck(false);
+  </script>
+</body>
+</html>
