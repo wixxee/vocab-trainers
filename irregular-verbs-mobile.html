@@ -1647,14 +1647,13 @@
     let tableBlurred = false;
     let tableRevealedIds = new Set();
 
-    // ===== SPEECH (manual click only, Safari-friendly) =====
+    // ===== SPEECH (manual click only, iOS Safari synchronous) =====
     let activeUtterance = null;
-    let speechTimer = null;
 
     function pickEnglishVoice() {
       if (!("speechSynthesis" in window)) return null;
       const voices = window.speechSynthesis.getVoices() || [];
-      const enVoices = voices.filter(v => /^en[-_]/i.test(v.lang));
+      const enVoices = voices.filter(v => /^en[-_]/i.test(v.lang) && v.localService !== false);
       if (!enVoices.length) return null;
       const preferred = enVoices.find(v =>
         /(Samantha|Daniel|Alex|Karen|Moira|Serena|Google US English)/i.test(v.name) &&
@@ -1665,11 +1664,11 @@
 
     function speakVerb(v) {
       if (!v || !("speechSynthesis" in window)) return;
-      const text = v.tts || `${primaryForm(v.v1)}, ${primaryForm(v.v2)}, ${primaryForm(v.v3)}.`;
-      clearTimeout(speechTimer);
-      const needsCancel = window.speechSynthesis.speaking || window.speechSynthesis.pending;
-      if (needsCancel) window.speechSynthesis.cancel();
-      speechTimer = setTimeout(() => {
+      const synth = window.speechSynthesis;
+      const text = v.tts || `${primaryForm(v.v1)}, ${primaryForm(v.v2)}, ${primaryForm(v.v3)}`;
+      try {
+        if (synth.speaking || synth.pending) synth.cancel();
+        if (synth.paused) synth.resume();
         const u = new SpeechSynthesisUtterance(text);
         u.lang = "en-US";
         u.rate = 0.88;
@@ -1678,8 +1677,8 @@
         activeUtterance = u;
         u.onend = () => { if (activeUtterance === u) activeUtterance = null; };
         u.onerror = () => { if (activeUtterance === u) activeUtterance = null; };
-        window.speechSynthesis.speak(u);
-      }, needsCancel ? 60 : 0);
+        synth.speak(u);
+      } catch {}
     }
 
     if ("speechSynthesis" in window) {
@@ -1979,47 +1978,46 @@
       return v1 + "ed";
     }
 
-    function generateDistractors(target, pool) {
-      const correctStr = formatTriple(target);
-      const candidates = new Set();
-
-      const a = primaryForm(target.v1);
-      const b = primaryForm(target.v2);
-      const c = primaryForm(target.v3);
-
-      // Plausible fake traps for the SAME verb
+    function makeWrongTriple(v) {
+      const correctStr = formatTriple(v);
+      const a = primaryForm(v.v1);
+      const b = primaryForm(v.v2);
+      const c = primaryForm(v.v3);
       const reg = makeRegularPast(a);
+
       const traps = [];
       if (b !== reg && c !== reg) {
-        traps.push(`${target.v1} — ${reg} — ${reg}`);
+        traps.push(`${v.v1} — ${reg} — ${reg}`);
       }
       if (b !== c) {
-        traps.push(`${target.v1} — ${target.v2} — ${target.v2}`);
-        traps.push(`${target.v1} — ${target.v3} — ${target.v2}`);
+        traps.push(`${v.v1} — ${v.v2} — ${v.v2}`);
+        traps.push(`${v.v1} — ${v.v3} — ${v.v2}`);
       } else if (a !== b) {
-        traps.push(`${target.v1} — ${target.v1} — ${target.v1}`);
-        traps.push(`${target.v1} — ${target.v2} — ${target.v1}`);
+        traps.push(`${v.v1} — ${v.v1} — ${v.v1}`);
+        traps.push(`${v.v1} — ${v.v2} — ${v.v1}`);
       } else {
-        traps.push(`${target.v1} — ${reg} — ${target.v1}`);
+        traps.push(`${v.v1} — ${reg} — ${v.v1}`);
       }
+      // Fallback for edge cases where regular form matches v2/v3 (e.g. abide -> abided)
+      traps.push(`${v.v1} — ${v.v1} — ${v.v2}`);
+      traps.push(`${v.v1} — ${a}en — ${a}en`);
 
-      // Pick up to 2 traps for the same verb
-      traps.sort(() => Math.random() - 0.5);
-      for (const t of traps) {
-        if (t !== correctStr && candidates.size < 2) candidates.add(t);
-      }
+      const valid = traps.filter(t => t !== correctStr);
+      return valid[Math.floor(Math.random() * Math.min(valid.length, 3))];
+    }
 
-      // Fill remaining slots from other verbs (prefer same starting letter or same pattern)
-      const others = pool.filter(v => v.id !== target.id && v.v1 !== target.v1);
+    function generateDistractors(target, pool) {
+      // 2 options of target word (1 right + 1 wrong) & 2 options of another word (1 right + 1 wrong)
+      const others = pool.filter(v => v.id !== target.id && v.v1 !== target.v1 && v.ru !== target.ru);
       const similar = others.filter(v => v.v1[0] === target.v1[0] || v.pattern === target.pattern);
-      const ordered = [...similar.sort(() => Math.random() - 0.5), ...others.sort(() => Math.random() - 0.5)];
-      for (const o of ordered) {
-        if (candidates.size >= 3) break;
-        const s = formatTriple(o);
-        if (s !== correctStr) candidates.add(s);
-      }
+      const source = similar.length ? similar : others;
+      const other = source[Math.floor(Math.random() * source.length)];
 
-      return [...candidates].slice(0, 3);
+      return [
+        makeWrongTriple(target),
+        formatTriple(other),
+        makeWrongTriple(other)
+      ];
     }
 
     function clearQuizTimer() {
@@ -2033,7 +2031,7 @@
       clearQuizTimer();
       const content = document.getElementById("quizContent");
       const empty = document.getElementById("quizEmpty");
-      const pool = deck.length >= 4 ? deck : [];
+      const pool = deck.length >= 1 ? deck : [];
       if (!pool.length) {
         content.style.display = "none";
         empty.style.display = "block";
