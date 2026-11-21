@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Vocab Trainers">
+  <title>Vocab Trainers — Тренажёры слов</title>
+  <style>
+    :root {
+      --bg: #f1f5f9;
+      --surface: #ffffff;
+      --surface-2: #f8fafc;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --primary: #4f46e5;
+      --primary-hover: #4338ca;
+      --primary-soft: rgba(79, 70, 229, 0.1);
+      --primary-text: #4338ca;
+      --success: #10b981;
+      --shadow: 0 8px 24px rgba(15, 23, 42, 0.07);
+      --radius: 20px;
+      --safe-top: env(safe-area-inset-top, 0px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    [data-theme="dark"] {
+      --bg: #0b1120;
+      --surface: #151e32;
+      --surface-2: #1e293b;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --border: #293548;
+      --primary: #6366f1;
+      --primary-hover: #818cf8;
+      --primary-soft: rgba(99, 102, 241, 0.18);
+      --primary-text: #a5b4fc;
+      --success: #34d399;
+      --shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100dvh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: calc(20px + var(--safe-top)) 16px calc(36px + var(--safe-bottom));
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .brand h1 {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+    }
+
+    .brand p {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .theme-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 17px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .theme-btn:active {
+      transform: scale(0.95);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    @media (min-width: 680px) {
+      .grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .card-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 13px;
+      background: var(--primary-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .lang-pill {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+
+    .card-title {
+      font-size: 19px;
+      font-weight: 700;
+      letter-spacing: -0.015em;
+      margin-top: 12px;
+    }
+
+    .card-desc {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.45;
+      margin-top: 5px;
+    }
+
+    .progress-box {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px 12px;
+    }
+
+    .progress-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .progress-row strong {
+      color: var(--text);
+    }
+
+    .bar-track {
+      height: 6px;
+      background: var(--border);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--success));
+      border-radius: 999px;
+      transition: width 0.3s ease;
+    }
+
+    .card-links {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .link-btn {
+      text-decoration: none;
+      padding: 11px 12px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: transform 0.1s ease, background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .link-btn:active {
+      transform: scale(0.97);
+    }
+
+    .link-btn.primary {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .link-btn.primary:hover {
+      background: var(--primary-hover);
+    }
+
+    .link-btn.secondary {
+      background: var(--surface-2);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .link-btn.secondary:hover {
+      border-color: var(--primary);
+      color: var(--primary-text);
+    }
+
+    footer {
+      margin-top: 28px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <h1>Vocab Trainers</h1>
+        <p>Интерактивные тренажёры английской лексики</p>
+      </div>
+      <button class="theme-btn" id="themeBtn" aria-label="Сменить тему">🌙</button>
+    </header>
+
+    <main class="grid" id="deckGrid"></main>
+
+    <footer>
+      Прогресс сохраняется локально в браузере · На iPhone для озвучки выключите беззвучный режим
+    </footer>
+  </div>
+
+  <script>
+    const THEME_KEY = "vocab_trainers_hub_theme_v1";
+
+    const DECKS = [
+      {
+        id: "irregular",
+        icon: "⚡",
+        lang: "English",
+        title: "Irregular Verbs",
+        desc: "185 неправильных глаголов (V1 / V2 / V3). Карточки, тест 2+2, ввод нужной формы, таблица и группировка по паттернам.",
+        total: 185,
+        storageKey: "irregular_verbs_mobile_progress_v1",
+        storageType: "array",
+        mobileUrl: "irregular-verbs-mobile.html",
+        desktopUrl: "irregular-verbs-trainer.html"
+      },
+      {
+        id: "travel",
+        icon: "✈️",
+        lang: "English",
+        title: "Travel & Cities",
+        desc: "93 слова и выражения по темам: планирование поездок, города и впечатления, виды путешествий и бронирование.",
+        total: 93,
+        storageKey: "travel_vocab_progress_v1",
+        storageType: "map",
+        mobileUrl: "travel-vocab-mobile.html",
+        desktopUrl: "travel-vocab-trainer.html"
+      }
+    ];
+
+    function getMasteredCount(deck) {
+      try {
+        const raw = localStorage.getItem(deck.storageKey);
+        if (!raw) return 0;
+        const parsed = JSON.parse(raw);
+        if (deck.storageType === "array" && Array.isArray(parsed)) {
+          return parsed.length;
+        }
+        if (deck.storageType === "map" && parsed && typeof parsed === "object") {
+          return Object.values(parsed).filter(v => v === "mastered").length;
+        }
+      } catch {}
+      return 0;
+    }
+
+    function renderDecks() {
+      const grid = document.getElementById("deckGrid");
+      const isMobile = window.matchMedia("(max-width: 640px)").matches;
+
+      grid.innerHTML = DECKS.map(d => {
+        const done = Math.min(getMasteredCount(d), d.total);
+        const pct = Math.round((done / d.total) * 100);
+        const mobCls = isMobile ? "primary" : "secondary";
+        const deskCls = isMobile ? "secondary" : "primary";
+
+        return `
+          <article class="card">
+            <div>
+              <div class="card-head">
+                <div class="card-icon">${d.icon}</div>
+                <span class="lang-pill">${d.lang} · ${d.total}</span>
+              </div>
+              <h2 class="card-title">${d.title}</h2>
+              <p class="card-desc">${d.desc}</p>
+            </div>
+
+            <div class="progress-box">
+              <div class="progress-row">
+                <span>Прогресс</span>
+                <strong>${done} / ${d.total} (${pct}%)</strong>
+              </div>
+              <div class="bar-track">
+                <div class="bar-fill" style="width:${pct}%"></div>
+              </div>
+            </div>
+
+            <div class="card-links">
+              <a class="link-btn ${mobCls}" href="${d.mobileUrl}">📱 Мобильная</a>
+              <a class="link-btn ${deskCls}" href="${d.desktopUrl}">💻 Полная</a>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function applyTheme(theme) {
+      document.documentElement.setAttribute("data-theme", theme);
+      document.getElementById("themeBtn").textContent = theme === "dark" ? "☀️" : "🌙";
+      try { localStorage.setItem(THEME_KEY, theme); } catch {}
+    }
+
+    const saved = localStorage.getItem(THEME_KEY) || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    applyTheme(saved);
+
+    document.getElementById("themeBtn").addEventListener("click", () => {
+      applyTheme(document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark");
+    });
+
+    renderDecks();
+    window.addEventListener("pageshow", renderDecks);
+  </script>
+</body>
+</html>
