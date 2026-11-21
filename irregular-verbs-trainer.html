@@ -1,0 +1,1905 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Irregular Verbs — English Trainer (185 глаголов)</title>
+  <style>
+    :root {
+      --bg: #f6f7f9;
+      --surface: #ffffff;
+      --surface-2: #f0f2f6;
+      --border: #e2e6ee;
+      --text: #161b26;
+      --text-muted: #5c667a;
+      --accent: #4f46e5;
+      --accent-hover: #4338ca;
+      --accent-soft: rgba(79, 70, 229, 0.1);
+      --success: #16a34a;
+      --success-soft: #eafaf0;
+      --warning: #d97706;
+      --warning-soft: #fef6e7;
+      --danger: #dc2626;
+      --danger-soft: #fef0f0;
+      --v1-color: #2563eb;
+      --v1-soft: rgba(37, 99, 235, 0.12);
+      --v2-color: #7c3aed;
+      --v2-soft: rgba(124, 58, 237, 0.12);
+      --v3-color: #0d9488;
+      --v3-soft: rgba(13, 148, 136, 0.12);
+      --shadow: 0 8px 28px rgba(18, 25, 43, 0.07);
+      --radius: 16px;
+      --radius-sm: 10px;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0b1120;
+      --surface: #151e32;
+      --surface-2: #1e293b;
+      --border: #293548;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --accent: #6366f1;
+      --accent-hover: #818cf8;
+      --accent-soft: rgba(99, 102, 241, 0.18);
+      --success: #34d399;
+      --success-soft: rgba(52, 211, 153, 0.14);
+      --warning: #fbbf24;
+      --warning-soft: rgba(251, 191, 36, 0.14);
+      --danger: #f87171;
+      --danger-soft: rgba(248, 113, 113, 0.14);
+      --v1-color: #60a5fa;
+      --v1-soft: rgba(96, 165, 250, 0.16);
+      --v2-color: #a78bfa;
+      --v2-soft: rgba(167, 139, 250, 0.16);
+      --v3-color: #2dd4bf;
+      --v3-soft: rgba(45, 212, 191, 0.16);
+      --shadow: 0 10px 32px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      min-height: 100vh;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .app {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 22px 20px 56px;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .brand h1 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .brand p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      font: inherit;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      border-radius: var(--radius-sm);
+      padding: 8px 14px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: all 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    button:hover:not(:disabled) {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    button:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    button.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    button.primary:hover:not(:disabled) {
+      background: var(--accent-hover);
+      border-color: var(--accent-hover);
+      color: #fff;
+    }
+
+    button.success {
+      background: var(--success-soft);
+      border-color: transparent;
+      color: var(--success);
+    }
+
+    button.success:hover:not(:disabled) {
+      border-color: var(--success);
+    }
+
+    button.danger {
+      background: var(--danger-soft);
+      border-color: transparent;
+      color: var(--danger);
+    }
+
+    button.danger:hover:not(:disabled) {
+      border-color: var(--danger);
+    }
+
+    button.ghost {
+      background: transparent;
+      border-color: transparent;
+      color: var(--text-muted);
+    }
+
+    button.ghost:hover:not(:disabled) {
+      background: var(--surface-2);
+      color: var(--text);
+      border-color: transparent;
+    }
+
+    /* Progress Panel */
+    .progress-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 18px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .progress-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+      font-size: 0.88rem;
+    }
+
+    .stats-badges {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      background: var(--surface-2);
+      color: var(--text-muted);
+    }
+
+    .badge.mastered { background: var(--success-soft); color: var(--success); }
+    .badge.accent { background: var(--accent-soft); color: var(--accent); }
+
+    .bar-track {
+      height: 8px;
+      background: var(--surface-2);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .bar-mastered {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--success));
+      transition: width 0.3s ease;
+    }
+
+    /* Controls & Filters */
+    .controls-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .tabs {
+      display: inline-flex;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 4px;
+      gap: 4px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.88rem;
+    }
+
+    .tab-btn.active {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .tab-btn:hover:not(.active) {
+      color: var(--text);
+      background: var(--surface-2);
+    }
+
+    .filters-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    select, input[type="text"], input[type="search"] {
+      font: inherit;
+      font-size: 0.88rem;
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.15s ease;
+    }
+
+    select:focus, input[type="text"]:focus, input[type="search"]:focus {
+      border-color: var(--accent);
+    }
+
+    /* Stage */
+    .stage {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .tab-pane {
+      display: none;
+    }
+
+    .tab-pane.active {
+      display: block;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 48px 20px;
+      color: var(--text-muted);
+    }
+
+    .empty-state h3 {
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .empty-state p {
+      margin-bottom: 16px;
+    }
+
+    .kbd {
+      display: inline-block;
+      padding: 1px 6px;
+      font-size: 0.74rem;
+      border-radius: 5px;
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+      color: var(--text-muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+
+    .shortcuts-tip {
+      margin-top: 16px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* Flashcards */
+    .fc-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .fc-scene {
+      perspective: 1100px;
+      margin-bottom: 20px;
+    }
+
+    .fc-card {
+      position: relative;
+      width: 100%;
+      height: 310px;
+      transform-style: preserve-3d;
+      -webkit-transform-style: preserve-3d;
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+      cursor: pointer;
+    }
+
+    .fc-card.flipped {
+      transform: rotateY(180deg);
+    }
+
+    .fc-face {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    .fc-front {
+      transform: rotateY(0deg);
+    }
+
+    .fc-back {
+      transform: rotateY(180deg);
+      border-color: var(--accent);
+    }
+
+    .fc-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .fc-badges {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .fc-center {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 12px;
+    }
+
+    .fc-ru-main {
+      font-size: 1.9rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      max-width: 720px;
+    }
+
+    .fc-forms-grid {
+      width: 100%;
+      max-width: 760px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .fc-form-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .form-tag {
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 9px;
+      border-radius: 7px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .form-tag.v1 { background: var(--v1-soft); color: var(--v1-color); }
+    .form-tag.v2 { background: var(--v2-soft); color: var(--v2-color); }
+    .form-tag.v3 { background: var(--v3-soft); color: var(--v3-color); }
+
+    .fc-form-val {
+      font-size: 1.35rem;
+      font-weight: 700;
+    }
+
+    .fc-ipa {
+      font-size: 0.88rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 4px 10px;
+      border-radius: 8px;
+    }
+
+    .fc-back-ru {
+      font-size: 0.94rem;
+      color: var(--text-muted);
+    }
+
+    .fc-footer-tip {
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .fc-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .rate-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    /* Quiz */
+    .quiz-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .quiz-prompt {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px 22px;
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .quiz-prompt-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .quiz-prompt-text {
+      font-size: 1.65rem;
+      font-weight: 700;
+    }
+
+    .quiz-ipa {
+      margin-top: 8px;
+      font-size: 0.86rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      color: var(--accent);
+    }
+
+    .quiz-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .quiz-opt {
+      text-align: left;
+      justify-content: flex-start;
+      padding: 16px 18px;
+      min-height: 62px;
+      font-size: 1rem;
+      border-radius: 12px;
+      gap: 10px;
+    }
+
+    .opt-num {
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      background: var(--surface-2);
+      border-radius: 6px;
+      padding: 2px 7px;
+      flex-shrink: 0;
+    }
+
+    .quiz-opt.correct {
+      background: var(--success-soft);
+      border-color: var(--success);
+      color: var(--success);
+    }
+
+    .quiz-opt.wrong {
+      background: var(--danger-soft);
+      border-color: var(--danger);
+      color: var(--danger);
+    }
+
+    .quiz-footer {
+      min-height: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* Drill (Typing) */
+    .drill-wrap {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .seg-control {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 4px;
+      margin-bottom: 18px;
+    }
+
+    .seg-btn {
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      padding: 8px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+    }
+
+    .seg-btn.active {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .drill-prompt {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .target-pill {
+      display: inline-flex;
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .target-pill.v1 { background: var(--v1-soft); color: var(--v1-color); }
+    .target-pill.v2 { background: var(--v2-soft); color: var(--v2-color); }
+    .target-pill.v3 { background: var(--v3-soft); color: var(--v3-color); }
+
+    .drill-ru {
+      font-size: 1.55rem;
+      font-weight: 700;
+    }
+
+    .drill-input-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .drill-input-row input {
+      flex: 1;
+      font-size: 1.05rem;
+      padding: 12px 14px;
+    }
+
+    .drill-input-row input.correct {
+      border-color: var(--success);
+      background: var(--success-soft);
+    }
+
+    .drill-input-row input.wrong {
+      border-color: var(--danger);
+      background: var(--danger-soft);
+    }
+
+    .drill-hint {
+      margin-top: 10px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.92rem;
+      color: var(--warning);
+      min-height: 22px;
+    }
+
+    .drill-sub-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+      gap: 8px;
+    }
+
+    .drill-result {
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .drill-result.show {
+      display: flex;
+    }
+
+    .drill-triple {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .drill-triple .hl {
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    /* Table */
+    .table-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .table-toolbar input {
+      flex: 1;
+      min-width: 240px;
+    }
+
+    .table-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .verb-row {
+      display: grid;
+      grid-template-columns: minmax(260px, 1.25fr) minmax(240px, 1.5fr) auto;
+      gap: 14px;
+      align-items: center;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--surface-2);
+      transition: border-color 0.15s ease;
+    }
+
+    .verb-row:hover {
+      border-color: var(--accent);
+    }
+
+    .verb-row.mastered {
+      border-color: rgba(22, 163, 74, 0.4);
+    }
+
+    .verb-forms {
+      font-weight: 700;
+      font-size: 0.98rem;
+      transition: filter 0.15s ease;
+    }
+
+    .verb-forms.blurred {
+      filter: blur(6px);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .verb-forms.blurred:hover {
+      filter: blur(0);
+    }
+
+    .verb-forms .sep {
+      color: var(--text-muted);
+      font-weight: 400;
+      margin: 0 5px;
+    }
+
+    .verb-ipa {
+      font-size: 0.78rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      color: var(--accent);
+      margin-top: 2px;
+    }
+
+    .verb-ru {
+      font-size: 0.92rem;
+    }
+
+    .verb-controls {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .mini-btn {
+      padding: 6px 10px;
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="brand">
+        <h1>Irregular Verbs — English Trainer</h1>
+        <p>185 неправильных глаголов · карточки, тест 2+2, ввод форм и таблица</p>
+      </div>
+      <div class="header-actions">
+        <button id="themeToggle">🌙 Тема</button>
+        <button id="resetProgress" class="ghost">Сброс прогресса</button>
+      </div>
+    </header>
+
+    <section class="progress-panel">
+      <div class="progress-top">
+        <strong id="progressSummary">Выучено: 0 из 185 (0%)</strong>
+        <div class="stats-badges">
+          <span class="badge mastered" id="statMastered">✓ Выучено: 0</span>
+          <span class="badge" id="statRemaining">○ Осталось: 185</span>
+        </div>
+      </div>
+      <div class="bar-track">
+        <div class="bar-mastered" id="barMastered" style="width: 0%"></div>
+      </div>
+    </section>
+
+    <div class="controls-bar">
+      <nav class="tabs" role="tablist">
+        <button class="tab-btn active" data-tab="cards">Карточки</button>
+        <button class="tab-btn" data-tab="quiz">Тест</button>
+        <button class="tab-btn" data-tab="drill">Ввод форм</button>
+        <button class="tab-btn" data-tab="table">Таблица</button>
+      </nav>
+      <button id="shuffleBtn">🔀 Перемешать</button>
+    </div>
+
+    <div class="filters-row">
+      <select id="statusFilter" aria-label="Статус">
+        <option value="all">Все статусы</option>
+        <option value="learning">На изучении</option>
+        <option value="mastered">Выученные</option>
+      </select>
+      <select id="patternFilter" aria-label="Паттерн">
+        <option value="all">Все паттерны</option>
+        <option value="aaa">A–A–A (одинаковые)</option>
+        <option value="abb">A–B–B (V2 = V3)</option>
+        <option value="aba">A–B–A (V1 = V3)</option>
+        <option value="iau">i–a–u</option>
+        <option value="en">V3 на -n / -en</option>
+        <option value="other">Прочие</option>
+      </select>
+      <select id="levelFilter" aria-label="Уровень">
+        <option value="all">Все уровни</option>
+        <option value="basic">Базовые</option>
+        <option value="mid">Средние</option>
+        <option value="rare">Редкие</option>
+      </select>
+      <select id="alphaFilter" aria-label="Алфавит">
+        <option value="all">Все буквы (A–W)</option>
+        <option value="A-C">A–C</option>
+        <option value="D-F">D–F</option>
+        <option value="G-K">G–K</option>
+        <option value="L-P">L–P</option>
+        <option value="Q-S">Q–S</option>
+        <option value="T-W">T–W</option>
+      </select>
+      <button id="resetFiltersBtn" class="ghost">Сбросить фильтры</button>
+    </div>
+
+    <main class="stage">
+      <!-- TAB 1: CARDS -->
+      <section class="tab-pane active" id="tab-cards">
+        <div id="fcContent">
+          <div class="fc-meta">
+            <span id="fcCounter">Карточка 1 из 185</span>
+            <span id="fcStatusBadge" class="badge">На изучении</span>
+          </div>
+
+          <div class="fc-scene">
+            <div class="fc-card" id="fcCard">
+              <div class="fc-face fc-front">
+                <div class="fc-top">
+                  <div class="fc-badges" id="fcFrontBadges"></div>
+                </div>
+                <div class="fc-center">
+                  <div class="fc-ru-main" id="fcRu"></div>
+                </div>
+                <div class="fc-footer-tip">Нажми на карточку или <span class="kbd">Space</span>, чтобы увидеть V1 / V2 / V3</div>
+              </div>
+
+              <div class="fc-face fc-back">
+                <div class="fc-top">
+                  <div class="fc-badges" id="fcBackBadges"></div>
+                  <button id="fcSpeakBtn" class="mini-btn" title="Озвучить (S)">🔊 Озвучить</button>
+                </div>
+                <div class="fc-center">
+                  <div class="fc-forms-grid">
+                    <div class="fc-form-box">
+                      <span class="form-tag v1">V1 · Infinitive</span>
+                      <span class="fc-form-val" id="fcV1"></span>
+                    </div>
+                    <div class="fc-form-box">
+                      <span class="form-tag v2">V2 · Past Simple</span>
+                      <span class="fc-form-val" id="fcV2"></span>
+                    </div>
+                    <div class="fc-form-box">
+                      <span class="form-tag v3">V3 · Participle</span>
+                      <span class="fc-form-val" id="fcV3"></span>
+                    </div>
+                  </div>
+                  <div class="fc-ipa" id="fcIpa" style="display:none;"></div>
+                  <div class="fc-back-ru" id="fcBackRu"></div>
+                </div>
+                <div class="fc-footer-tip">Оцени знание: <span class="kbd">1</span> повторить · <span class="kbd">2</span> знаю</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="fc-actions">
+            <button id="fcPrevBtn">← Назад</button>
+            <div class="rate-actions">
+              <button id="fcAgainBtn" class="danger">↺ Повторить <span class="kbd">1</span></button>
+              <button id="fcKnowBtn" class="success">✓ Знаю <span class="kbd">2</span></button>
+            </div>
+            <button id="fcNextBtn">Дальше →</button>
+          </div>
+          <div class="shortcuts-tip">
+            Клавиши: <span class="kbd">Space</span> перевернуть · <span class="kbd">←</span>/<span class="kbd">→</span> листать · <span class="kbd">1</span> повторить · <span class="kbd">2</span> знаю · <span class="kbd">S</span> озвучить
+          </div>
+        </div>
+        <div class="empty-state" id="fcEmpty" style="display:none;">
+          <h3>Нет глаголов по фильтру</h3>
+          <p>Измени фильтры, чтобы продолжить тренировку.</p>
+          <button class="primary" onclick="resetFilters()">Сбросить фильтры</button>
+        </div>
+      </section>
+
+      <!-- TAB 2: QUIZ -->
+      <section class="tab-pane" id="tab-quiz">
+        <div id="quizContent">
+          <div class="quiz-top">
+            <span style="font-size:0.9rem;color:var(--text-muted)">Режим 2+2: два слова, по 1 верной и 1 ложной форме</span>
+            <div class="stats-badges">
+              <span class="badge mastered">Верно: <strong id="qScore">0</strong></span>
+              <span class="badge">Ответов: <strong id="qTotal">0</strong></span>
+              <span class="badge accent">Серия: <strong id="qStreak">0</strong> 🔥</span>
+            </div>
+          </div>
+
+          <div class="quiz-prompt">
+            <div class="quiz-prompt-label">Выбери верные 3 формы</div>
+            <div class="quiz-prompt-text" id="qPrompt"></div>
+            <div class="quiz-ipa" id="qIpa" style="display:none;"></div>
+          </div>
+
+          <div class="quiz-options" id="qOptions"></div>
+
+          <div class="quiz-footer">
+            <button id="qSpeakBtn" class="mini-btn" style="visibility:hidden;">🔊 Озвучить</button>
+            <button id="qNextBtn" class="primary" style="display:none;">Следующий вопрос →</button>
+          </div>
+          <div class="shortcuts-tip">
+            Клавиши: <span class="kbd">1</span>–<span class="kbd">4</span> выбрать ответ · <span class="kbd">Enter</span> дальше · <span class="kbd">S</span> озвучить
+          </div>
+        </div>
+        <div class="empty-state" id="quizEmpty" style="display:none;">
+          <h3>Нет глаголов по фильтру</h3>
+          <p>Измени фильтры, чтобы продолжить тест.</p>
+          <button class="primary" onclick="resetFilters()">Сбросить фильтры</button>
+        </div>
+      </section>
+
+      <!-- TAB 3: DRILL -->
+      <section class="tab-pane" id="tab-drill">
+        <div id="drillContent" class="drill-wrap">
+          <div class="seg-control" id="drillModeSeg">
+            <button class="seg-btn active" data-mode="random">Случайная</button>
+            <button class="seg-btn" data-mode="v1">Только V1</button>
+            <button class="seg-btn" data-mode="v2">Только V2</button>
+            <button class="seg-btn" data-mode="v3">Только V3</button>
+          </div>
+
+          <div class="drill-prompt">
+            <div class="target-pill v2" id="drillBadge">Введи V2 (Past Simple)</div>
+            <div class="drill-ru" id="drillRu"></div>
+          </div>
+
+          <div class="drill-input-row">
+            <input type="text" id="drillInput" placeholder="Введи нужную форму на английском..." autocomplete="off" spellcheck="false" />
+            <button id="drillCheckBtn" class="primary">Проверить</button>
+          </div>
+          <div class="drill-hint" id="drillHint"></div>
+
+          <div class="drill-sub-actions">
+            <button id="drillHintBtn">💡 Подсказка</button>
+            <button id="drillSkipBtn" class="ghost">Пропустить →</button>
+          </div>
+
+          <div class="drill-result" id="drillResult">
+            <div>
+              <div class="drill-triple" id="drillTripleText"></div>
+              <div class="verb-ipa" id="drillIpa" style="display:none;"></div>
+            </div>
+            <div style="display:flex;gap:8px;align-items:center;">
+              <button id="drillSpeakBtn" class="mini-btn">🔊</button>
+              <button id="drillNextBtn" class="primary">Дальше →</button>
+            </div>
+          </div>
+        </div>
+        <div class="empty-state" id="drillEmpty" style="display:none;">
+          <h3>Нет глаголов по фильтру</h3>
+          <p>Измени фильтры, чтобы продолжить ввод форм.</p>
+          <button class="primary" onclick="resetFilters()">Сбросить фильтры</button>
+        </div>
+      </section>
+
+      <!-- TAB 4: TABLE -->
+      <section class="tab-pane" id="tab-table">
+        <div class="table-toolbar">
+          <input type="search" id="tableSearch" placeholder="Поиск по V1, V2, V3 или переводу..." autocomplete="off" />
+          <button id="blurToggleBtn">👁️ Скрыть формы</button>
+          <span class="badge" id="tableCountText">185 глаголов</span>
+        </div>
+        <div class="table-list" id="verbList"></div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const STORAGE_KEY = "irregular_verbs_mobile_progress_v1";
+    const THEME_KEY = "irregular_verbs_mobile_theme_v1";
+
+    const PATTERN_LABELS = {
+      aaa: "A–A–A",
+      abb: "A–B–B",
+      aba: "A–B–A",
+      iau: "i–a–u",
+      en: "-n/-en",
+      other: "Прочие"
+    };
+
+    const LEVEL_LABELS = {
+      basic: "Базовый",
+      mid: "Средний",
+      rare: "Редкий"
+    };
+
+    const VERBS = [
+      // A
+      { id: 1, v1: "abide", v2: "abided", v3: "abided", ru: "соблюдать, придерживаться", level: "rare" },
+      { id: 2, v1: "abide", v2: "abode", v3: "abode", ru: "пребывать, жить", level: "rare" },
+      { id: 3, v1: "arise", v2: "arose", v3: "arisen", ru: "возникать, появляться", level: "mid" },
+      { id: 4, v1: "awake", v2: "awoke", v3: "awoken", ru: "проснуться, просыпаться; (раз)будить, очнуться", level: "mid" },
+      // B
+      { id: 5, v1: "be", v2: "was / were", v3: "been", ru: "быть, являться", level: "basic" },
+      { id: 6, v1: "bear", v2: "bore", v3: "borne", ru: "носить, выносить", level: "mid" },
+      { id: 7, v1: "bear", v2: "bore", v3: "born", ru: "носить, рождать", level: "basic" },
+      { id: 8, v1: "beat", v2: "beat", v3: "beaten", ru: "бить, колотить", level: "basic" },
+      { id: 9, v1: "become", v2: "became", v3: "become", ru: "становиться", level: "basic" },
+      { id: 10, v1: "begin", v2: "began", v3: "begun", ru: "начинать", level: "basic" },
+      { id: 11, v1: "bend", v2: "bent", v3: "bent", ru: "гнуть", level: "mid" },
+      { id: 12, v1: "bet", v2: "bet", v3: "bet", ru: "держать пари", level: "mid" },
+      { id: 13, v1: "bind", v2: "bound", v3: "bound", ru: "связывать", level: "mid" },
+      { id: 14, v1: "bite", v2: "bit", v3: "bitten", ru: "кусать(ся), укусить", level: "basic" },
+      { id: 15, v1: "bid", v2: "bade", v3: "bidden", ru: "велеть, просить", level: "rare" },
+      { id: 16, v1: "bid", v2: "bid", v3: "bid", ru: "предлагать цену, торговаться", level: "mid" },
+      { id: 17, v1: "bleed", v2: "bled", v3: "bled", ru: "истекать кровью", level: "mid" },
+      { id: 18, v1: "blow", v2: "blew", v3: "blown", ru: "дуть, выдыхать", level: "basic" },
+      { id: 19, v1: "breed", v2: "bred", v3: "bred", ru: "порождать, разводить, выводить", level: "mid" },
+      { id: 20, v1: "break", v2: "broke", v3: "broken", ru: "ломать, разбивать, разрушать", level: "basic" },
+      { id: 21, v1: "bring", v2: "brought", v3: "brought", ru: "приносить, привозить, доставлять", level: "basic" },
+      { id: 22, v1: "broadcast", v2: "broadcast / broadcasted", v3: "broadcast / broadcasted", ru: "передавать по радио, транслировать", level: "mid" },
+      { id: 23, v1: "build", v2: "built", v3: "built", ru: "строить, сооружать", level: "basic" },
+      { id: 24, v1: "burn", v2: "burnt", v3: "burnt", ru: "гореть, жечь", level: "basic" },
+      { id: 25, v1: "burst", v2: "burst", v3: "burst", ru: "взрываться, лопаться", level: "mid" },
+      { id: 26, v1: "buy", v2: "bought", v3: "bought", ru: "покупать, приобретать", level: "basic" },
+      // C
+      { id: 27, v1: "cast", v2: "cast", v3: "cast", ru: "бросать, кидать", level: "mid" },
+      { id: 28, v1: "catch", v2: "caught", v3: "caught", ru: "ловить, поймать, схватить", level: "basic" },
+      { id: 29, v1: "choose", v2: "chose", v3: "chosen", ru: "выбирать, избирать", level: "basic" },
+      { id: 30, v1: "cling", v2: "clung", v3: "clung", ru: "прилипать, цеплять, льнуть", level: "rare" },
+      { id: 31, v1: "come", v2: "came", v3: "come", ru: "приходить, подходить", level: "basic" },
+      { id: 32, v1: "cost", v2: "cost", v3: "cost", ru: "стоить, обходиться", level: "basic" },
+      { id: 33, v1: "creep", v2: "crept", v3: "crept", ru: "ползать, красться", level: "mid" },
+      { id: 34, v1: "cut", v2: "cut", v3: "cut", ru: "резать, разрезать", level: "basic" },
+      // D
+      { id: 35, v1: "deal", v2: "dealt", v3: "dealt", ru: "иметь дело, распределять", level: "basic" },
+      { id: 36, v1: "dig", v2: "dug", v3: "dug", ru: "копать, рыть", level: "mid" },
+      { id: 37, v1: "dive", v2: "dived / dove", v3: "dived", ru: "нырять, бросаться в воду", level: "mid" },
+      { id: 38, v1: "do", v2: "did", v3: "done", ru: "делать, выполнять", level: "basic" },
+      { id: 39, v1: "draw", v2: "drew", v3: "drawn", ru: "рисовать, чертить, тащить", level: "basic" },
+      { id: 40, v1: "dream", v2: "dreamt", v3: "dreamt", ru: "видеть сон; мечтать, грезить", level: "basic" },
+      { id: 41, v1: "drink", v2: "drank", v3: "drunk", ru: "пить", level: "basic" },
+      { id: 42, v1: "drive", v2: "drove", v3: "driven", ru: "ездить, подвозить", level: "basic" },
+      { id: 43, v1: "dwell", v2: "dwelt", v3: "dwelt", ru: "жить, обитать, находиться, пребывать", level: "rare" },
+      // E
+      { id: 44, v1: "eat", v2: "ate", v3: "eaten", ru: "есть, поглощать, поедать", level: "basic" },
+      // F
+      { id: 45, v1: "fall", v2: "fell", v3: "fallen", ru: "падать", level: "basic" },
+      { id: 46, v1: "feed", v2: "fed", v3: "fed", ru: "кормить", level: "basic" },
+      { id: 47, v1: "feel", v2: "felt", v3: "felt", ru: "чувствовать, ощущать", level: "basic" },
+      { id: 48, v1: "fight", v2: "fought", v3: "fought", ru: "драться, сражаться, воевать", level: "basic" },
+      { id: 49, v1: "find", v2: "found", v3: "found", ru: "находить, обнаруживать", level: "basic" },
+      { id: 50, v1: "fit", v2: "fit", v3: "fit", ru: "подходить по размеру, годиться, соответствовать", level: "basic" },
+      { id: 51, v1: "flee", v2: "fled", v3: "fled", ru: "бежать, спасаться бегством", level: "mid" },
+      { id: 52, v1: "fling", v2: "flung", v3: "flung", ru: "кидать, бросать", level: "rare" },
+      { id: 53, v1: "fly", v2: "flew", v3: "flown", ru: "летать", level: "basic" },
+      { id: 54, v1: "forbid", v2: "forbade", v3: "forbidden", ru: "запрещать", level: "mid" },
+      { id: 55, v1: "forecast", v2: "forecast", v3: "forecast", ru: "предсказывать погоду", level: "mid" },
+      { id: 56, v1: "forget", v2: "forgot", v3: "forgotten", ru: "забывать о (чём-либо)", level: "basic" },
+      { id: 57, v1: "forgive", v2: "forgave", v3: "forgiven", ru: "прощать", level: "basic" },
+      { id: 58, v1: "forsake", v2: "forsook", v3: "forsaken", ru: "бросать, отказываться, покидать", level: "rare" },
+      { id: 59, v1: "foresee", v2: "foresaw", v3: "foreseen", ru: "предвидеть, предвосхищать, предсказывать", level: "mid" },
+      { id: 60, v1: "foretell", v2: "foretold", v3: "foretold", ru: "предсказывать, прогнозировать", level: "rare" },
+      { id: 61, v1: "freeze", v2: "froze", v3: "frozen", ru: "замерзать, замирать", level: "basic" },
+      // G
+      { id: 62, v1: "get", v2: "got", v3: "got", ru: "получать, добираться", level: "basic" },
+      { id: 63, v1: "give", v2: "gave", v3: "given", ru: "дать, подать, дарить", level: "basic" },
+      { id: 64, v1: "go", v2: "went", v3: "gone", ru: "идти, двигаться", level: "basic" },
+      { id: 65, v1: "grow", v2: "grew", v3: "grown", ru: "расти, вырастать", level: "basic" },
+      { id: 66, v1: "grind", v2: "ground", v3: "ground", ru: "молоть, перемалывать", level: "mid" },
+      // H
+      { id: 67, v1: "hang", v2: "hung", v3: "hung", ru: "вешать, развешивать, висеть", level: "basic" },
+      { id: 68, v1: "have", v2: "had", v3: "had", ru: "иметь, обладать", level: "basic" },
+      { id: 69, v1: "hear", v2: "heard", v3: "heard", ru: "слышать, услышать", level: "basic" },
+      { id: 70, v1: "hide", v2: "hid", v3: "hidden", ru: "прятать, скрывать", level: "basic" },
+      { id: 71, v1: "hit", v2: "hit", v3: "hit", ru: "ударять, поражать", level: "basic" },
+      { id: 72, v1: "hold", v2: "held", v3: "held", ru: "держать, удерживать, задерживать", level: "basic" },
+      { id: 73, v1: "hurt", v2: "hurt", v3: "hurt", ru: "ранить, причинять боль, ушибить", level: "basic" },
+      // I
+      { id: 74, v1: "interweave", v2: "interwove", v3: "interwoven", ru: "сплетать; переплетать; перемешивать", level: "rare" },
+      // K
+      { id: 75, v1: "keep", v2: "kept", v3: "kept", ru: "хранить, сохранять, поддерживать", level: "basic" },
+      { id: 76, v1: "kneel", v2: "knelt", v3: "knelt", ru: "преклонить колени, стоять на коленях", level: "mid" },
+      { id: 77, v1: "knit", v2: "knit / knitted", v3: "knit / knitted", ru: "вязать (спицами)", level: "mid" },
+      { id: 78, v1: "know", v2: "knew", v3: "known", ru: "знать, иметь представление", level: "basic" },
+      // L
+      { id: 79, v1: "lay", v2: "laid", v3: "laid", ru: "класть, положить, покрывать", level: "basic" },
+      { id: 80, v1: "lead", v2: "led", v3: "led", ru: "вести за собой, сопровождать, руководить", level: "basic", ipa: "/liːd/ – /led/ – /led/", tts: "leed, led, led" },
+      { id: 81, v1: "lean", v2: "leant / leaned", v3: "leant / leaned", ru: "опираться, прислоняться", level: "mid" },
+      { id: 82, v1: "leap", v2: "leapt", v3: "leapt", ru: "прыгать, скакать", level: "mid" },
+      { id: 83, v1: "learn", v2: "learnt", v3: "learnt", ru: "учить, изучать, узнавать", level: "basic" },
+      { id: 84, v1: "leave", v2: "left", v3: "left", ru: "покидать, уходить, уезжать, оставлять", level: "basic" },
+      { id: 85, v1: "lend", v2: "lent", v3: "lent", ru: "одалживать, давать взаймы (в долг)", level: "basic" },
+      { id: 86, v1: "let", v2: "let", v3: "let", ru: "позволять, разрешать, сдавать в наем", level: "basic" },
+      { id: 87, v1: "lie", v2: "lay", v3: "lain", ru: "лежать", level: "basic" },
+      { id: 88, v1: "light", v2: "lit", v3: "lit", ru: "зажигать, светиться, освещать", level: "basic" },
+      { id: 89, v1: "lose", v2: "lost", v3: "lost", ru: "терять, лишаться, утрачивать", level: "basic" },
+      // M
+      { id: 90, v1: "make", v2: "made", v3: "made", ru: "делать, создавать, изготавливать", level: "basic" },
+      { id: 91, v1: "mean", v2: "meant", v3: "meant", ru: "значить, иметь в виду, подразумевать", level: "basic" },
+      { id: 92, v1: "meet", v2: "met", v3: "met", ru: "встречать, знакомиться", level: "basic" },
+      { id: 93, v1: "mistake", v2: "mistook", v3: "mistaken", ru: "ошибаться, заблуждаться", level: "mid" },
+      { id: 94, v1: "mow", v2: "mowed", v3: "mown", ru: "косить траву, жать", level: "rare" },
+      // O
+      { id: 95, v1: "overhear", v2: "overheard", v3: "overheard", ru: "подслушивать, нечаянно услышать", level: "mid" },
+      { id: 96, v1: "oversleep", v2: "overslept", v3: "overslept", ru: "проспать; заспаться", level: "mid" },
+      // P
+      { id: 97, v1: "pay", v2: "paid", v3: "paid", ru: "платить, оплачивать, рассчитываться", level: "basic" },
+      { id: 98, v1: "prove", v2: "proved", v3: "proven", ru: "доказывать, подтверждать", level: "basic" },
+      { id: 99, v1: "put", v2: "put", v3: "put", ru: "ставить, помещать, класть", level: "basic" },
+      // Q
+      { id: 100, v1: "quit", v2: "quit", v3: "quit", ru: "увольняться, покидать, уходить, уезжать", level: "basic" },
+      // R
+      { id: 101, v1: "read", v2: "read", v3: "read", ru: "читать, прочитать", level: "basic", ipa: "/riːd/ – /red/ – /red/", tts: "reed, red, red" },
+      { id: 102, v1: "rend", v2: "rended / rent", v3: "rended / rent", ru: "разрывать", level: "rare" },
+      { id: 103, v1: "ride", v2: "rode", v3: "ridden", ru: "ехать верхом, кататься", level: "basic" },
+      { id: 104, v1: "rid", v2: "rid", v3: "rid", ru: "освобождать, избавлять", level: "mid" },
+      { id: 105, v1: "ring", v2: "rang", v3: "rung", ru: "звенеть, звонить", level: "basic" },
+      { id: 106, v1: "rise", v2: "rose", v3: "risen", ru: "восходить, вставать, подниматься", level: "basic" },
+      { id: 107, v1: "run", v2: "ran", v3: "run", ru: "бежать, бегать", level: "basic" },
+      // S
+      { id: 108, v1: "saw", v2: "sawed", v3: "sawn", ru: "пилить, распиливать", level: "rare" },
+      { id: 109, v1: "say", v2: "said", v3: "said", ru: "говорить, сказать, произносить", level: "basic" },
+      { id: 110, v1: "see", v2: "saw", v3: "seen", ru: "видеть", level: "basic" },
+      { id: 111, v1: "seek", v2: "sought", v3: "sought", ru: "искать, разыскивать", level: "mid" },
+      { id: 112, v1: "sell", v2: "sold", v3: "sold", ru: "продавать, торговать", level: "basic" },
+      { id: 113, v1: "send", v2: "sent", v3: "sent", ru: "посылать, отправлять, отсылать", level: "basic" },
+      { id: 114, v1: "set", v2: "set", v3: "set", ru: "устанавливать, задавать, назначать", level: "basic" },
+      { id: 115, v1: "sew", v2: "sewed", v3: "sewn", ru: "шить, пришивать", level: "mid", ipa: "/səʊ/ – /səʊd/ – /səʊn/", tts: "so, sowed, sewn" },
+      { id: 116, v1: "shake", v2: "shook", v3: "shaken", ru: "трясти, встряхивать", level: "basic" },
+      { id: 117, v1: "shear", v2: "sheared", v3: "shorn", ru: "стричь, резать, лишать", level: "rare" },
+      { id: 118, v1: "shed", v2: "shed", v3: "shed", ru: "проливать (слезы, кровь), избавляться", level: "mid" },
+      { id: 119, v1: "shit", v2: "shit / shat", v3: "shit / shat", ru: "гадить", level: "rare" },
+      { id: 120, v1: "shine", v2: "shone", v3: "shone", ru: "светить, сиять, озарять", level: "basic" },
+      { id: 121, v1: "shoot", v2: "shot", v3: "shot", ru: "стрелять", level: "basic" },
+      { id: 122, v1: "show", v2: "showed", v3: "shown / showed", ru: "показывать", level: "basic" },
+      { id: 123, v1: "shrink", v2: "shrank", v3: "shrunk", ru: "сжиматься, сокращаться", level: "mid" },
+      { id: 124, v1: "shrive", v2: "shrove", v3: "shriven", ru: "исповедовать, отпускать грехи", level: "rare" },
+      { id: 125, v1: "shut", v2: "shut", v3: "shut", ru: "закрывать, запирать, затворять", level: "basic" },
+      { id: 126, v1: "sing", v2: "sang", v3: "sung", ru: "петь, напевать", level: "basic" },
+      { id: 127, v1: "sink", v2: "sank", v3: "sunk", ru: "тонуть, погружаться", level: "basic" },
+      { id: 128, v1: "sit", v2: "sat", v3: "sat", ru: "сидеть, садиться", level: "basic" },
+      { id: 129, v1: "slay", v2: "slew", v3: "slain", ru: "убивать, уничтожать, лишать жизни", level: "rare" },
+      { id: 130, v1: "sleep", v2: "slept", v3: "slept", ru: "спать", level: "basic" },
+      { id: 131, v1: "slide", v2: "slid", v3: "slid", ru: "скользить; двигаться плавно, без резких скачков", level: "mid" },
+      { id: 132, v1: "sling", v2: "slung", v3: "slung", ru: "швырять, швырнуть, вешать через плечо, подвешивать", level: "rare" },
+      { id: 133, v1: "slink", v2: "slunk", v3: "slunk", ru: "красться, идти крадучись", level: "rare" },
+      { id: 134, v1: "slit", v2: "slit", v3: "slit", ru: "раздирать(ся); разрезать (вдоль)", level: "rare" },
+      { id: 135, v1: "smell", v2: "smelt", v3: "smelt", ru: "пахнуть, нюхать", level: "basic" },
+      { id: 136, v1: "smite", v2: "smote", v3: "smitten", ru: "ударять, разбивать", level: "rare" },
+      { id: 137, v1: "sow", v2: "sowed", v3: "sown", ru: "сеять, засевать", level: "rare", ipa: "/səʊ/ – /səʊd/ – /səʊn/", tts: "so, sowed, sown" },
+      { id: 138, v1: "speak", v2: "spoke", v3: "spoken", ru: "говорить, разговаривать, высказываться", level: "basic" },
+      { id: 139, v1: "speed", v2: "sped", v3: "sped", ru: "ускорять, спешить, мчаться", level: "mid" },
+      { id: 140, v1: "spell", v2: "spelt", v3: "spelt", ru: "произносить / писать по буквам", level: "basic" },
+      { id: 141, v1: "spend", v2: "spent", v3: "spent", ru: "тратить, расходовать, проводить (время)", level: "basic" },
+      { id: 142, v1: "spill", v2: "spilt", v3: "spilt", ru: "проливать, разливать", level: "mid" },
+      { id: 143, v1: "spin", v2: "spun / span", v3: "spun", ru: "прясть, крутить(ся)", level: "mid" },
+      { id: 144, v1: "spit", v2: "spat", v3: "spat", ru: "плевать, насаживать, натыкать, протыкать", level: "mid" },
+      { id: 145, v1: "split", v2: "split", v3: "split", ru: "раскалывать, расщеплять", level: "mid" },
+      { id: 146, v1: "spoil", v2: "spoilt", v3: "spoilt", ru: "портить, баловать", level: "mid" },
+      { id: 147, v1: "spread", v2: "spread", v3: "spread", ru: "распространять, распространяться", level: "basic" },
+      { id: 148, v1: "spring", v2: "sprang", v3: "sprung", ru: "прыгать, вскочить", level: "mid" },
+      { id: 149, v1: "stand", v2: "stood", v3: "stood", ru: "стоять", level: "basic" },
+      { id: 150, v1: "steal", v2: "stole", v3: "stolen", ru: "воровать, красть", level: "basic" },
+      { id: 151, v1: "stick", v2: "stuck", v3: "stuck", ru: "втыкать, приклеивать", level: "basic" },
+      { id: 152, v1: "sting", v2: "stung", v3: "stung", ru: "жалить, ужалить", level: "mid" },
+      { id: 153, v1: "stink", v2: "stank", v3: "stunk", ru: "вонять, смердеть", level: "mid" },
+      { id: 154, v1: "stride", v2: "strode", v3: "stridden", ru: "шагать, наносить удар", level: "rare" },
+      { id: 155, v1: "strike", v2: "struck", v3: "struck / stricken", ru: "ударять, бить, поражать", level: "mid" },
+      { id: 156, v1: "string", v2: "strung", v3: "strung", ru: "связывать, завязывать, натягивать, нанизывать", level: "rare" },
+      { id: 157, v1: "strive", v2: "strove", v3: "striven", ru: "стремиться, стараться", level: "mid" },
+      { id: 158, v1: "swear", v2: "swore", v3: "sworn", ru: "клясться, присягать", level: "mid" },
+      { id: 159, v1: "sweep", v2: "swept", v3: "swept", ru: "мести, подметать, смахивать", level: "mid" },
+      { id: 160, v1: "swell", v2: "swelled", v3: "swollen", ru: "вздуться, раздуваться, опухать", level: "mid" },
+      { id: 161, v1: "swim", v2: "swam", v3: "swum", ru: "плавать, плыть", level: "basic" },
+      { id: 162, v1: "swing", v2: "swung", v3: "swung", ru: "качаться, вертеться", level: "mid" },
+      // T
+      { id: 163, v1: "take", v2: "took", v3: "taken", ru: "брать, хватать, взять", level: "basic" },
+      { id: 164, v1: "teach", v2: "taught", v3: "taught", ru: "учить, обучать", level: "basic" },
+      { id: 165, v1: "tear", v2: "tore", v3: "torn", ru: "рвать, отрывать", level: "basic", ipa: "/teər/ – /tɔːr/ – /tɔːrn/", tts: "tare, tore, torn" },
+      { id: 166, v1: "tell", v2: "told", v3: "told", ru: "рассказывать", level: "basic" },
+      { id: 167, v1: "think", v2: "thought", v3: "thought", ru: "думать, мыслить, размышлять", level: "basic" },
+      { id: 168, v1: "throw", v2: "threw", v3: "thrown", ru: "бросать, кидать, метать", level: "basic" },
+      { id: 169, v1: "thrust", v2: "thrust", v3: "thrust", ru: "толкнуть, сунуть, навязывать, вонзить", level: "rare" },
+      { id: 170, v1: "tread", v2: "trod / treaded", v3: "trodden", ru: "топтать, давить, ступать, ступить", level: "rare" },
+      // U
+      { id: 171, v1: "understand", v2: "understood", v3: "understood", ru: "понимать, постигать", level: "basic" },
+      { id: 172, v1: "undertake", v2: "undertook", v3: "undertaken", ru: "предпринимать, брать на себя, гарантировать", level: "mid" },
+      { id: 173, v1: "undo", v2: "undid", v3: "undone", ru: "открывать; расстёгивать; развязывать", level: "mid" },
+      { id: 174, v1: "upset", v2: "upset", v3: "upset", ru: "расстраивать, огорчать", level: "basic" },
+      // W
+      { id: 175, v1: "wake", v2: "woke", v3: "woken", ru: "просыпаться, будить", level: "basic" },
+      { id: 176, v1: "wear", v2: "wore", v3: "worn", ru: "носить (одежду)", level: "basic" },
+      { id: 177, v1: "weave", v2: "wove", v3: "woven", ru: "ткать, плести, сочинять", level: "mid" },
+      { id: 178, v1: "weep", v2: "wept", v3: "wept", ru: "плакать, рыдать", level: "mid" },
+      { id: 179, v1: "wet", v2: "wet", v3: "wet", ru: "мочить, увлажнять", level: "mid" },
+      { id: 180, v1: "win", v2: "won", v3: "won", ru: "победить, выиграть", level: "basic" },
+      { id: 181, v1: "wind", v2: "wound", v3: "wound", ru: "заводить (часы), виться", level: "mid", ipa: "/waɪnd/ – /waʊnd/ – /waʊnd/", tts: "wined, wownd, wownd" },
+      { id: 182, v1: "wring", v2: "wrung", v3: "wrung", ru: "жать, выжимать, скручивать", level: "rare" },
+      { id: 183, v1: "write", v2: "wrote", v3: "written", ru: "писать, записывать", level: "basic" },
+      { id: 184, v1: "withdraw", v2: "withdrew", v3: "withdrawn", ru: "брать назад, отнимать", level: "mid" },
+      { id: 185, v1: "withstand", v2: "withstood", v3: "withstood", ru: "выдержать, противостоять", level: "mid" }
+    ];
+
+    function primaryForm(str) {
+      return str.split("/")[0].trim().toLowerCase();
+    }
+
+    function classifyPattern(v) {
+      const a = primaryForm(v.v1);
+      const b = primaryForm(v.v2);
+      const c = primaryForm(v.v3);
+      if (a === b && b === c) return "aaa";
+      if (a === c && a !== b) return "aba";
+      if (b === c && a !== b) return "abb";
+      if (["begin", "drink", "ring", "shrink", "sing", "sink", "spring", "stink", "swim"].includes(a)) return "iau";
+      if (c.endsWith("n") || c.endsWith("ne")) return "en";
+      return "other";
+    }
+
+    VERBS.forEach(v => { v.pattern = classifyPattern(v); });
+
+    // State
+    let mastered = new Set();
+    try {
+      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+      if (Array.isArray(saved)) mastered = new Set(saved);
+    } catch {}
+
+    const filters = { status: "all", pattern: "all", level: "all", alpha: "all" };
+    let activeTab = "cards";
+    let deck = [];
+    let fcIndex = 0;
+    let fcFlipped = false;
+
+    let quizScore = 0;
+    let quizTotal = 0;
+    let quizStreak = 0;
+    let quizCurrent = null;
+    let quizLocked = false;
+    let quizAutoTimer = null;
+
+    let drillMode = "random";
+    let drillCurrent = null;
+    let drillTargetForm = "v2";
+    let drillHintStep = 0;
+    let drillAnswered = false;
+
+    let tableBlurred = false;
+    let tableRevealedIds = new Set();
+
+    // Speech (manual click only, synchronous)
+    let activeUtterance = null;
+    function pickEnglishVoice() {
+      if (!("speechSynthesis" in window)) return null;
+      const voices = window.speechSynthesis.getVoices() || [];
+      const enVoices = voices.filter(v => /^en[-_]/i.test(v.lang) && v.localService !== false);
+      const pool = enVoices.length ? enVoices : voices.filter(v => /^en[-_]/i.test(v.lang));
+      if (!pool.length) return null;
+      const preferred = pool.find(v =>
+        /(Samantha|Daniel|Alex|Karen|Moira|Serena|Google US English)/i.test(v.name) &&
+        !/Compact/i.test(v.name)
+      );
+      return preferred || pool.find(v => !/Compact/i.test(v.name)) || pool[0];
+    }
+
+    function speakVerb(v) {
+      if (!v || !("speechSynthesis" in window)) return;
+      const synth = window.speechSynthesis;
+      const text = v.tts || `${primaryForm(v.v1)}, ${primaryForm(v.v2)}, ${primaryForm(v.v3)}`;
+      try {
+        if (synth.speaking || synth.pending) synth.cancel();
+        if (synth.paused) synth.resume();
+        const u = new SpeechSynthesisUtterance(text);
+        u.lang = "en-US";
+        u.rate = 0.88;
+        const voice = pickEnglishVoice();
+        if (voice) u.voice = voice;
+        activeUtterance = u;
+        u.onend = () => { if (activeUtterance === u) activeUtterance = null; };
+        u.onerror = () => { if (activeUtterance === u) activeUtterance = null; };
+        synth.speak(u);
+      } catch {}
+    }
+
+    if ("speechSynthesis" in window) {
+      window.speechSynthesis.onvoiceschanged = () => pickEnglishVoice();
+    }
+
+    // Theme & Progress
+    function saveProgress() {
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify([...mastered])); } catch {}
+      updateProgressUI();
+    }
+
+    function updateProgressUI() {
+      const total = VERBS.length;
+      const done = mastered.size;
+      const pct = Math.round((done / total) * 100);
+      document.getElementById("progressSummary").textContent = `Выучено: ${done} из ${total} (${pct}%)`;
+      document.getElementById("statMastered").textContent = `✓ Выучено: ${done}`;
+      document.getElementById("statRemaining").textContent = `○ Осталось: ${total - done}`;
+      document.getElementById("barMastered").style.width = `${pct}%`;
+    }
+
+    function applyTheme(theme) {
+      document.documentElement.setAttribute("data-theme", theme);
+      document.getElementById("themeToggle").textContent = theme === "dark" ? "☀️ Тема" : "🌙 Тема";
+      try { localStorage.setItem(THEME_KEY, theme); } catch {}
+    }
+
+    const savedTheme = localStorage.getItem(THEME_KEY) || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    applyTheme(savedTheme);
+    document.getElementById("themeToggle").addEventListener("click", () => {
+      applyTheme(document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark");
+    });
+
+    // Filtering
+    function matchAlpha(v1, range) {
+      if (range === "all") return true;
+      const ch = v1[0].toUpperCase();
+      const [start, end] = range.split("-");
+      return ch >= start && ch <= end;
+    }
+
+    function getFilteredVerbs() {
+      return VERBS.filter(v => {
+        if (filters.status === "learning" && mastered.has(v.id)) return false;
+        if (filters.status === "mastered" && !mastered.has(v.id)) return false;
+        if (filters.pattern !== "all" && v.pattern !== filters.pattern) return false;
+        if (filters.level !== "all" && v.level !== filters.level) return false;
+        if (!matchAlpha(v.v1, filters.alpha)) return false;
+        return true;
+      });
+    }
+
+    function rebuildDeck(shouldShuffle = false) {
+      clearQuizTimer();
+      deck = [...getFilteredVerbs()];
+      if (shouldShuffle) {
+        for (let i = deck.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [deck[i], deck[j]] = [deck[j], deck[i]];
+        }
+      }
+      if (fcIndex >= deck.length) fcIndex = 0;
+      renderFlashcard();
+      if (activeTab === "quiz") nextQuizQuestion();
+      if (activeTab === "drill") nextDrillQuestion();
+      if (activeTab === "table") renderTable();
+    }
+
+    function resetFilters() {
+      filters.status = "all";
+      filters.pattern = "all";
+      filters.level = "all";
+      filters.alpha = "all";
+      document.getElementById("statusFilter").value = "all";
+      document.getElementById("patternFilter").value = "all";
+      document.getElementById("levelFilter").value = "all";
+      document.getElementById("alphaFilter").value = "all";
+      rebuildDeck(false);
+    }
+
+    // Flashcards
+    function renderFlashcard() {
+      const content = document.getElementById("fcContent");
+      const empty = document.getElementById("fcEmpty");
+      if (!deck.length) {
+        content.style.display = "none";
+        empty.style.display = "block";
+        return;
+      }
+      content.style.display = "block";
+      empty.style.display = "none";
+
+      const v = deck[fcIndex];
+      fcFlipped = false;
+      document.getElementById("fcCard").classList.remove("flipped");
+      document.getElementById("fcCounter").textContent = `Карточка ${fcIndex + 1} из ${deck.length}`;
+
+      const isDone = mastered.has(v.id);
+      const stBadge = document.getElementById("fcStatusBadge");
+      stBadge.textContent = isDone ? "✓ Выучено" : "На изучении";
+      stBadge.className = `badge${isDone ? " mastered" : ""}`;
+
+      const badgesHtml = `
+        <span class="badge accent">${PATTERN_LABELS[v.pattern]}</span>
+        <span class="badge">${LEVEL_LABELS[v.level]}</span>
+      `;
+      document.getElementById("fcFrontBadges").innerHTML = badgesHtml;
+      document.getElementById("fcBackBadges").innerHTML = badgesHtml;
+
+      document.getElementById("fcRu").textContent = v.ru;
+      document.getElementById("fcBackRu").textContent = v.ru;
+      document.getElementById("fcV1").textContent = v.v1;
+      document.getElementById("fcV2").textContent = v.v2;
+      document.getElementById("fcV3").textContent = v.v3;
+
+      const ipaEl = document.getElementById("fcIpa");
+      if (v.ipa) {
+        ipaEl.textContent = v.ipa;
+        ipaEl.style.display = "inline-block";
+      } else {
+        ipaEl.style.display = "none";
+      }
+    }
+
+    function flipCard() {
+      if (!deck.length) return;
+      fcFlipped = !fcFlipped;
+      document.getElementById("fcCard").classList.toggle("flipped", fcFlipped);
+    }
+
+    function markCurrentCard(known) {
+      if (!deck.length) return;
+      const v = deck[fcIndex];
+      if (known) mastered.add(v.id);
+      else mastered.delete(v.id);
+      saveProgress();
+
+      if ((filters.status === "learning" && known) || (filters.status === "mastered" && !known)) {
+        deck.splice(fcIndex, 1);
+        if (fcIndex >= deck.length) fcIndex = 0;
+      } else {
+        fcIndex = (fcIndex + 1) % deck.length;
+      }
+      renderFlashcard();
+    }
+
+    document.getElementById("fcCard").addEventListener("click", e => {
+      if (e.target.closest("button")) return;
+      flipCard();
+    });
+    document.getElementById("fcSpeakBtn").addEventListener("click", e => {
+      e.stopPropagation();
+      if (deck.length) speakVerb(deck[fcIndex]);
+    });
+    document.getElementById("fcAgainBtn").addEventListener("click", () => markCurrentCard(false));
+    document.getElementById("fcKnowBtn").addEventListener("click", () => markCurrentCard(true));
+    document.getElementById("fcPrevBtn").addEventListener("click", () => {
+      if (!deck.length) return;
+      fcIndex = (fcIndex - 1 + deck.length) % deck.length;
+      renderFlashcard();
+    });
+    document.getElementById("fcNextBtn").addEventListener("click", () => {
+      if (!deck.length) return;
+      fcIndex = (fcIndex + 1) % deck.length;
+      renderFlashcard();
+    });
+
+    // Quiz (2+2 options)
+    function formatTriple(v) {
+      return `${v.v1} — ${v.v2} — ${v.v3}`;
+    }
+
+    function makeRegularPast(v1) {
+      if (v1.endsWith("e")) return v1 + "d";
+      if (/[bcdfghjklmnpqrstvwxyz]y$/.test(v1)) return v1.slice(0, -1) + "ied";
+      return v1 + "ed";
+    }
+
+    function makeWrongTriple(v) {
+      const correctStr = formatTriple(v);
+      const a = primaryForm(v.v1);
+      const b = primaryForm(v.v2);
+      const c = primaryForm(v.v3);
+      const reg = makeRegularPast(a);
+      const traps = [];
+      if (b !== reg && c !== reg) traps.push(`${v.v1} — ${reg} — ${reg}`);
+      if (b !== c) {
+        traps.push(`${v.v1} — ${v.v2} — ${v.v2}`);
+        traps.push(`${v.v1} — ${v.v3} — ${v.v2}`);
+      } else if (a !== b) {
+        traps.push(`${v.v1} — ${v.v1} — ${v.v1}`);
+        traps.push(`${v.v1} — ${v.v2} — ${v.v1}`);
+      } else {
+        traps.push(`${v.v1} — ${reg} — ${v.v1}`);
+      }
+      traps.push(`${v.v1} — ${v.v1} — ${v.v2}`);
+      traps.push(`${v.v1} — ${a}en — ${a}en`);
+      const valid = traps.filter(t => t !== correctStr);
+      return valid[Math.floor(Math.random() * Math.min(valid.length, 3))];
+    }
+
+    function generateDistractors(target, pool) {
+      const others = pool.filter(v => v.id !== target.id && v.v1 !== target.v1 && v.ru !== target.ru);
+      const similar = others.filter(v => v.v1[0] === target.v1[0] || v.pattern === target.pattern);
+      const source = similar.length ? similar : others;
+      const other = source[Math.floor(Math.random() * source.length)];
+      return [makeWrongTriple(target), formatTriple(other), makeWrongTriple(other)];
+    }
+
+    function clearQuizTimer() {
+      if (quizAutoTimer) {
+        clearTimeout(quizAutoTimer);
+        quizAutoTimer = null;
+      }
+    }
+
+    function nextQuizQuestion() {
+      clearQuizTimer();
+      const content = document.getElementById("quizContent");
+      const empty = document.getElementById("quizEmpty");
+      if (!deck.length) {
+        content.style.display = "none";
+        empty.style.display = "block";
+        return;
+      }
+      content.style.display = "block";
+      empty.style.display = "none";
+
+      quizLocked = false;
+      let next = deck[Math.floor(Math.random() * deck.length)];
+      if (quizCurrent && deck.length > 1 && next.id === quizCurrent.id) {
+        next = deck[(deck.indexOf(next) + 1) % deck.length];
+      }
+      quizCurrent = next;
+
+      document.getElementById("qPrompt").textContent = next.ru;
+      const qIpa = document.getElementById("qIpa");
+      qIpa.style.display = "none";
+      qIpa.textContent = next.ipa || "";
+      document.getElementById("qSpeakBtn").style.visibility = "hidden";
+      document.getElementById("qNextBtn").style.display = "none";
+
+      const correctText = formatTriple(next);
+      const options = [
+        { text: correctText, isCorrect: true },
+        ...generateDistractors(next, VERBS).map(t => ({ text: t, isCorrect: false }))
+      ].sort(() => Math.random() - 0.5);
+
+      const container = document.getElementById("qOptions");
+      container.innerHTML = "";
+      options.forEach((opt, i) => {
+        const btn = document.createElement("button");
+        btn.className = "quiz-opt";
+        btn.dataset.text = opt.text;
+        btn.innerHTML = `<span class="opt-num">${i + 1}</span><span>${opt.text}</span>`;
+        btn.addEventListener("click", () => handleQuizAnswer(btn, opt.isCorrect, correctText));
+        container.appendChild(btn);
+      });
+    }
+
+    function handleQuizAnswer(btn, isCorrect, correctText) {
+      if (quizLocked) return;
+      quizLocked = true;
+      quizTotal++;
+
+      document.querySelectorAll("#qOptions .quiz-opt").forEach(b => {
+        b.disabled = true;
+        if (b.dataset.text === correctText) b.classList.add("correct");
+      });
+
+      if (isCorrect) {
+        quizScore++;
+        quizStreak++;
+      } else {
+        quizStreak = 0;
+        btn.classList.add("wrong");
+      }
+
+      document.getElementById("qScore").textContent = quizScore;
+      document.getElementById("qTotal").textContent = quizTotal;
+      document.getElementById("qStreak").textContent = quizStreak;
+
+      if (quizCurrent.ipa) document.getElementById("qIpa").style.display = "block";
+      document.getElementById("qSpeakBtn").style.visibility = "visible";
+
+      if (isCorrect) {
+        quizAutoTimer = setTimeout(() => {
+          quizAutoTimer = null;
+          nextQuizQuestion();
+        }, 750);
+      } else {
+        document.getElementById("qNextBtn").style.display = "inline-flex";
+      }
+    }
+
+    document.getElementById("qNextBtn").addEventListener("click", nextQuizQuestion);
+    document.getElementById("qSpeakBtn").addEventListener("click", () => {
+      if (quizCurrent) speakVerb(quizCurrent);
+    });
+
+    // Drill (Typing)
+    const FORM_META = {
+      v1: { label: "Введи V1 (Infinitive)", cls: "v1" },
+      v2: { label: "Введи V2 (Past Simple)", cls: "v2" },
+      v3: { label: "Введи V3 (Past Participle)", cls: "v3" }
+    };
+
+    function acceptedAnswers(formStr) {
+      const norm = formStr.toLowerCase().trim();
+      const parts = norm.split(/[\/,]/).map(s => s.trim()).filter(Boolean);
+      return new Set([norm, ...parts]);
+    }
+
+    function nextDrillQuestion() {
+      const content = document.getElementById("drillContent");
+      const empty = document.getElementById("drillEmpty");
+      if (!deck.length) {
+        content.style.display = "none";
+        empty.style.display = "block";
+        return;
+      }
+      content.style.display = "block";
+      empty.style.display = "none";
+
+      let next = deck[Math.floor(Math.random() * deck.length)];
+      if (drillCurrent && deck.length > 1 && next.id === drillCurrent.id) {
+        next = deck[(deck.indexOf(next) + 1) % deck.length];
+      }
+      drillCurrent = next;
+      drillHintStep = 0;
+      drillAnswered = false;
+
+      drillTargetForm = drillMode === "random"
+        ? ["v1", "v2", "v3"][Math.floor(Math.random() * 3)]
+        : drillMode;
+
+      const meta = FORM_META[drillTargetForm];
+      const badge = document.getElementById("drillBadge");
+      badge.textContent = meta.label;
+      badge.className = `target-pill ${meta.cls}`;
+      document.getElementById("drillRu").textContent = next.ru;
+
+      const input = document.getElementById("drillInput");
+      input.value = "";
+      input.disabled = false;
+      input.className = "";
+      document.getElementById("drillHint").textContent = "";
+      document.getElementById("drillResult").classList.remove("show");
+      document.getElementById("drillCheckBtn").disabled = false;
+      document.getElementById("drillHintBtn").disabled = false;
+      input.focus();
+    }
+
+    function checkDrillAnswer() {
+      if (!drillCurrent || drillAnswered) return;
+      const input = document.getElementById("drillInput");
+      const val = input.value.trim().toLowerCase().replace(/\s+/g, " ");
+      if (!val) return;
+
+      const isOk = acceptedAnswers(drillCurrent[drillTargetForm]).has(val);
+      drillAnswered = true;
+      input.disabled = true;
+      input.classList.add(isOk ? "correct" : "wrong");
+      document.getElementById("drillCheckBtn").disabled = true;
+      document.getElementById("drillHintBtn").disabled = true;
+
+      const v1Html = drillTargetForm === "v1" ? `<span class="hl">${drillCurrent.v1}</span>` : drillCurrent.v1;
+      const v2Html = drillTargetForm === "v2" ? `<span class="hl">${drillCurrent.v2}</span>` : drillCurrent.v2;
+      const v3Html = drillTargetForm === "v3" ? `<span class="hl">${drillCurrent.v3}</span>` : drillCurrent.v3;
+      document.getElementById("drillTripleText").innerHTML = `${v1Html} — ${v2Html} — ${v3Html}`;
+
+      const ipaEl = document.getElementById("drillIpa");
+      if (drillCurrent.ipa) {
+        ipaEl.textContent = drillCurrent.ipa;
+        ipaEl.style.display = "block";
+      } else {
+        ipaEl.style.display = "none";
+      }
+      document.getElementById("drillResult").classList.add("show");
+    }
+
+    document.getElementById("drillCheckBtn").addEventListener("click", checkDrillAnswer);
+    document.getElementById("drillInput").addEventListener("keydown", e => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        if (drillAnswered) nextDrillQuestion();
+        else checkDrillAnswer();
+      }
+    });
+    document.getElementById("drillHintBtn").addEventListener("click", () => {
+      if (!drillCurrent || drillAnswered) return;
+      const ans = primaryForm(drillCurrent[drillTargetForm]);
+      const hintEl = document.getElementById("drillHint");
+      drillHintStep++;
+      hintEl.textContent = drillHintStep === 1
+        ? `Подсказка: ${ans[0]}${"•".repeat(Math.max(0, ans.length - 1))} (${ans.length} букв)`
+        : `Ответ: ${drillCurrent[drillTargetForm]}`;
+    });
+    document.getElementById("drillSkipBtn").addEventListener("click", nextDrillQuestion);
+    document.getElementById("drillNextBtn").addEventListener("click", nextDrillQuestion);
+    document.getElementById("drillSpeakBtn").addEventListener("click", () => {
+      if (drillCurrent) speakVerb(drillCurrent);
+    });
+    document.querySelectorAll("#drillModeSeg .seg-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll("#drillModeSeg .seg-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        drillMode = btn.dataset.mode;
+        nextDrillQuestion();
+      });
+    });
+
+    // Table
+    function renderTable() {
+      const q = document.getElementById("tableSearch").value.trim().toLowerCase();
+      const filtered = getFilteredVerbs().filter(v => {
+        if (!q) return true;
+        return (
+          v.v1.toLowerCase().includes(q) ||
+          v.v2.toLowerCase().includes(q) ||
+          v.v3.toLowerCase().includes(q) ||
+          v.ru.toLowerCase().includes(q)
+        );
+      });
+
+      document.getElementById("tableCountText").textContent = `${filtered.length} из ${VERBS.length}`;
+      const list = document.getElementById("verbList");
+      if (!filtered.length) {
+        list.innerHTML = `<div class="empty-state"><h3>Ничего не найдено</h3><p>Попробуй другой запрос или сбрось фильтры.</p></div>`;
+        return;
+      }
+
+      const frag = document.createDocumentFragment();
+      filtered.forEach(v => {
+        const isDone = mastered.has(v.id);
+        const isBlur = tableBlurred && !tableRevealedIds.has(v.id);
+
+        const row = document.createElement("div");
+        row.className = `verb-row${isDone ? " mastered" : ""}`;
+
+        const left = document.createElement("div");
+        const forms = document.createElement("div");
+        forms.className = `verb-forms${isBlur ? " blurred" : ""}`;
+        forms.innerHTML = `${v.v1}<span class="sep">—</span>${v.v2}<span class="sep">—</span>${v.v3}`;
+        if (tableBlurred) {
+          forms.addEventListener("click", () => {
+            if (tableRevealedIds.has(v.id)) {
+              tableRevealedIds.delete(v.id);
+              forms.classList.add("blurred");
+            } else {
+              tableRevealedIds.add(v.id);
+              forms.classList.remove("blurred");
+            }
+          });
+        }
+        left.appendChild(forms);
+        if (v.ipa) {
+          const ipa = document.createElement("div");
+          ipa.className = "verb-ipa";
+          ipa.textContent = v.ipa;
+          left.appendChild(ipa);
+        }
+
+        const ru = document.createElement("div");
+        ru.className = "verb-ru";
+        ru.textContent = v.ru;
+
+        const ctrl = document.createElement("div");
+        ctrl.className = "verb-controls";
+
+        const spk = document.createElement("button");
+        spk.className = "mini-btn";
+        spk.textContent = "🔊";
+        spk.title = "Озвучить";
+        spk.addEventListener("click", () => speakVerb(v));
+
+        const chk = document.createElement("button");
+        chk.className = `mini-btn${isDone ? " success" : ""}`;
+        chk.textContent = isDone ? "✓ Выучено" : "Отметить";
+        chk.addEventListener("click", () => {
+          if (mastered.has(v.id)) {
+            mastered.delete(v.id);
+            chk.classList.remove("success");
+            chk.textContent = "Отметить";
+            row.classList.remove("mastered");
+          } else {
+            mastered.add(v.id);
+            chk.classList.add("success");
+            chk.textContent = "✓ Выучено";
+            row.classList.add("mastered");
+          }
+          saveProgress();
+        });
+
+        ctrl.appendChild(spk);
+        ctrl.appendChild(chk);
+        row.appendChild(left);
+        row.appendChild(ru);
+        row.appendChild(ctrl);
+        frag.appendChild(row);
+      });
+
+      list.innerHTML = "";
+      list.appendChild(frag);
+    }
+
+    document.getElementById("tableSearch").addEventListener("input", renderTable);
+    document.getElementById("blurToggleBtn").addEventListener("click", () => {
+      tableBlurred = !tableBlurred;
+      tableRevealedIds.clear();
+      document.getElementById("blurToggleBtn").textContent = tableBlurred ? "🙈 Показать формы" : "👁️ Скрыть формы";
+      renderTable();
+    });
+
+    // Global Controls
+    document.querySelectorAll(".tab-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const target = btn.dataset.tab;
+        if (target === activeTab) return;
+        clearQuizTimer();
+        activeTab = target;
+        document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        document.querySelectorAll(".tab-pane").forEach(p => p.classList.remove("active"));
+        document.getElementById(`tab-${target}`).classList.add("active");
+        if (target === "cards") renderFlashcard();
+        if (target === "quiz") nextQuizQuestion();
+        if (target === "drill") nextDrillQuestion();
+        if (target === "table") renderTable();
+      });
+    });
+
+    document.getElementById("statusFilter").addEventListener("change", e => { filters.status = e.target.value; rebuildDeck(false); });
+    document.getElementById("patternFilter").addEventListener("change", e => { filters.pattern = e.target.value; rebuildDeck(false); });
+    document.getElementById("levelFilter").addEventListener("change", e => { filters.level = e.target.value; rebuildDeck(false); });
+    document.getElementById("alphaFilter").addEventListener("change", e => { filters.alpha = e.target.value; rebuildDeck(false); });
+    document.getElementById("resetFiltersBtn").addEventListener("click", resetFilters);
+    document.getElementById("shuffleBtn").addEventListener("click", () => rebuildDeck(true));
+    document.getElementById("resetProgress").addEventListener("click", () => {
+      if (!confirm("Сбросить весь прогресс изучения (все 185 глаголов)?")) return;
+      mastered.clear();
+      saveProgress();
+      rebuildDeck(false);
+    });
+
+    // Keyboard Shortcuts
+    document.addEventListener("keydown", e => {
+      const tag = (e.target && e.target.tagName) || "";
+      if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
+
+      if (activeTab === "cards" && deck.length) {
+        if (e.code === "Space") { e.preventDefault(); flipCard(); }
+        else if (e.key === "ArrowRight") { fcIndex = (fcIndex + 1) % deck.length; renderFlashcard(); }
+        else if (e.key === "ArrowLeft") { fcIndex = (fcIndex - 1 + deck.length) % deck.length; renderFlashcard(); }
+        else if (e.key === "1") markCurrentCard(false);
+        else if (e.key === "2") markCurrentCard(true);
+        else if (e.key.toLowerCase() === "s") speakVerb(deck[fcIndex]);
+      } else if (activeTab === "quiz" && quizCurrent) {
+        if (!quizLocked && ["1", "2", "3", "4"].includes(e.key)) {
+          const btns = document.querySelectorAll("#qOptions .quiz-opt");
+          if (btns[Number(e.key) - 1]) btns[Number(e.key) - 1].click();
+        } else if (quizLocked && (e.key === "Enter" || e.code === "Space")) {
+          e.preventDefault();
+          nextQuizQuestion();
+        } else if (quizLocked && e.key.toLowerCase() === "s") {
+          speakVerb(quizCurrent);
+        }
+      }
+    });
+
+    // Init
+    updateProgressUI();
+    rebuildDeck(false);
+  </script>
+</body>
+</html>
